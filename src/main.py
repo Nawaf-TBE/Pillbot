@@ -25,6 +25,10 @@ from services.llm_service import (
     extract_entities_with_gemini, check_llm_availability, get_llm_service_info,
     LLMServiceError, validate_extracted_entities
 )
+from services.form_filler_service import (
+    load_and_populate_form, get_form_filler_service_info, check_form_filler_availability,
+    FormFillerError, FormFillerService
+)
 
 
 def create_sample_extraction_rules():
@@ -376,6 +380,7 @@ def test_pdf_functions(pdf_path: str):
         print(f"\n🤖 Testing LLM entity extraction with Gemini...")
         
         entity_extraction_performed = False
+        form_filling_performed = False
         try:
             if check_llm_availability():
                 # Prepare document content for entity extraction
@@ -462,6 +467,107 @@ def test_pdf_functions(pdf_path: str):
                     save_document_metadata(doc_id, {"status": "entity_extraction_completed"})
                     entity_extraction_performed = True
                     
+                    # Step 5: Form Filling with extracted entities
+                    print(f"\n📋 Starting form filling process...")
+                    form_filling_performed = False
+                    
+                    try:
+                        if check_form_filler_availability():
+                            # Try to populate InsureCo Ozempic form as example
+                            populated_form = load_and_populate_form(entities, "InsureCo_Ozempic")
+                            
+                            # Save form filling results
+                            save_processed_data(doc_id, "form_filling_InsureCo_Ozempic", populated_form)
+                            
+                            form_metadata = populated_form["form_metadata"]
+                            print(f"✅ Form filling completed!")
+                            print(f"   📋 Form: {form_metadata['schema_name']} v{form_metadata['schema_version']}")
+                            print(f"   📊 Completion: {form_metadata['populated_fields_count']}/{form_metadata['total_fields_count']} fields ({form_metadata['completion_rate']:.1%})")
+                            
+                            if form_metadata["missing_fields"]:
+                                print(f"   ⚠️  Missing required fields: {len(form_metadata['missing_fields'])}")
+                                if len(form_metadata["missing_fields"]) <= 3:
+                                    print(f"      {', '.join(form_metadata['missing_fields'])}")
+                            
+                            # Show sample populated fields
+                            form_data = populated_form["form_data"]
+                            sample_fields = ["member_id", "patient_first_name", "requested_drug_name", "primary_diagnosis_description"]
+                            populated_fields = []
+                            
+                            for field in sample_fields:
+                                if field in form_data and form_data[field]["value"]:
+                                    populated_fields.append(f"{field}: {form_data[field]['value']}")
+                            
+                            if populated_fields:
+                                print(f"   📝 Sample populated fields:")
+                                for field_info in populated_fields[:3]:  # Show first 3
+                                    print(f"      {field_info}")
+                            
+                            # Update document status
+                            save_document_metadata(doc_id, {"status": "form_filling_completed"})
+                            form_filling_performed = True
+                            
+                            # Step 6: Generate filled PDF
+                            print(f"\n📄 Starting PDF generation...")
+                            pdf_generation_performed = False
+                            
+                            try:
+                                # Check if template exists
+                                template_path = Path("data/prior_auth_template.pdf")
+                                if template_path.exists():
+                                    # Generate output path
+                                    output_path = Path(f"data/{doc_id}_filled_form.pdf")
+                                    
+                                    # Use FormFillerService to generate filled PDF
+                                    form_service = FormFillerService()
+                                    form_service.generate_filled_pdf(
+                                        str(template_path),
+                                        populated_form,
+                                        str(output_path)
+                                    )
+                                    
+                                    # Get PDF generation stats from metadata
+                                    pdf_stats = populated_form["form_metadata"].get("pdf_generation", {})
+                                    
+                                    print(f"✅ PDF generation completed!")
+                                    print(f"   📄 Output: {output_path.name}")
+                                    print(f"   📊 Fields filled: {pdf_stats.get('fill_statistics', {}).get('fields_filled', 0)}")
+                                    print(f"   📈 Completion: {pdf_stats.get('completion_rate', 0):.1%}")
+                                    
+                                    # Save PDF generation results
+                                    save_processed_data(doc_id, "pdf_generation", {
+                                        "output_path": str(output_path),
+                                        "template_used": str(template_path),
+                                        "generation_stats": pdf_stats
+                                    })
+                                    
+                                    # Update document status
+                                    save_document_metadata(doc_id, {"status": "pdf_generation_completed"})
+                                    pdf_generation_performed = True
+                                    
+                                else:
+                                    print(f"⚠️  PDF template not found: {template_path}")
+                                    print(f"   Run 'python create_pdf_template.py' to create template")
+                                    save_processed_data(doc_id, "pdf_generation_error", {"error": "Template not found"})
+                                    
+                            except FormFillerError as e:
+                                print(f"❌ PDF generation failed: {e}")
+                                save_processed_data(doc_id, "pdf_generation_error", {"error": str(e)})
+                            except Exception as e:
+                                print(f"❌ Unexpected PDF generation error: {e}")
+                                save_processed_data(doc_id, "pdf_generation_error", {"error": str(e)})
+                            
+                        else:
+                            print(f"⚠️  Form filler service not available")
+                            save_processed_data(doc_id, "form_filling_error", {"error": "Form filler service not available"})
+                            
+                    except FormFillerError as e:
+                        print(f"❌ Form filling failed: {e}")
+                        save_processed_data(doc_id, "form_filling_error", {"error": str(e)})
+                    except Exception as e:
+                        print(f"❌ Unexpected form filling error: {e}")
+                        save_processed_data(doc_id, "form_filling_error", {"error": str(e)})
+                    
                 else:
                     print(f"⚠️  No content available for entity extraction")
                     save_processed_data(doc_id, "llm_entity_extraction_error", {"error": "No document content available"})
@@ -487,6 +593,8 @@ def test_pdf_functions(pdf_path: str):
         print(f"OCR performed: {'Yes' if ocr_performed else 'No'}")
         print(f"Parsing performed: {'Yes' if parsing_performed else 'No'}")
         print(f"Entity extraction performed: {'Yes' if entity_extraction_performed else 'No'}")
+        print(f"Form filling performed: {'Yes' if form_filling_performed else 'No'}")
+        print(f"PDF generation performed: {'Yes' if 'pdf_generation_performed' in locals() and pdf_generation_performed else 'No'}")
         
         # Show processing stages
         from services.data_store import get_document_stages
@@ -535,6 +643,13 @@ def main():
     print(f"  Model: {llm_info['model']}")
     print(f"  API Key: {'✅' if llm_info['api_key_configured'] else '❌'}")
     print(f"  Output: {llm_info['response_format']}")
+    
+    # Form Filler Service
+    form_filler_info = get_form_filler_service_info()
+    print(f"Form Filler: {form_filler_info['service_name']}")
+    print(f"  Available: {'✅' if check_form_filler_availability() else '❌'}")
+    print(f"  Features: {len(form_filler_info['supported_features'])} features")
+    print(f"  Schema Dir: {Path(form_filler_info['schema_directory']).name}/")
     
     # Check if a test PDF was provided as command line argument
     if len(sys.argv) > 1:
