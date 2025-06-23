@@ -1,0 +1,171 @@
+{
+  "document_path": "data/eb1f067f-ef23-4152-abd1-fe25b4a762c8_filled_form.pdf",
+  "schema_used": "demo_patient_intake",
+  "extraction_timestamp": "2025-06-23T17:03:53.071803",
+  "extracted_fields": {
+    "member_id": {
+      "name": "member_id",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Member ID:",
+      "validation_status": "missing"
+    },
+    "patient_first_name": {
+      "name": "patient_first_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "First Name:",
+      "validation_status": "missing"
+    },
+    "patient_last_name": {
+      "name": "patient_last_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Last Name:",
+      "validation_status": "missing"
+    },
+    "patient_date_of_birth": {
+      "name": "patient_date_of_birth",
+      "value": null,
+      "field_type": "date",
+      "confidence": 0.95,
+      "source_location": "Date of Birth:",
+      "validation_status": "missing"
+    },
+    "prescriber_name": {
+      "name": "prescriber_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Prescriber Name:",
+      "validation_status": "missing"
+    },
+    "prescriber_npi": {
+      "name": "prescriber_npi",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "NPI:",
+      "validation_status": "missing"
+    },
+    "prescriber_phone": {
+      "name": "prescriber_phone",
+      "value": null,
+      "field_type": "phone",
+      "confidence": 0.95,
+      "source_location": "Phone:",
+      "validation_status": "missing"
+    },
+    "primary_diagnosis_code": {
+      "name": "primary_diagnosis_code",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Diagnosis Code:",
+      "validation_status": "missing"
+    },
+    "primary_diagnosis_description": {
+      "name": "primary_diagnosis_description",
+      "value": null,
+      "field_type": "text",
+      "confidence": 0.95,
+      "source_location": "Diagnosis Description:",
+      "validation_status": "missing"
+    },
+    "requested_drug_name": {
+      "name": "requested_drug_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Drug Name:",
+      "validation_status": "missing"
+    },
+    "requested_strength": {
+      "name": "requested_strength",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Strength:",
+      "validation_status": "missing"
+    },
+    "quantity_requested": {
+      "name": "quantity_requested",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.95,
+      "source_location": "Quantity:",
+      "validation_status": "missing"
+    },
+    "days_supply": {
+      "name": "days_supply",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.95,
+      "source_location": "Days Supply:",
+      "validation_status": "missing"
+    },
+    "pharmacy_name": {
+      "name": "pharmacy_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Pharmacy:",
+      "validation_status": "missing"
+    },
+    "a1c_value": {
+      "name": "a1c_value",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.95,
+      "source_location": "A1C Value:",
+      "validation_status": "missing"
+    },
+    "bmi_value": {
+      "name": "bmi_value",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.95,
+      "source_location": "BMI:",
+      "validation_status": "missing"
+    },
+    "contraindications_present": {
+      "name": "contraindications_present",
+      "value": null,
+      "field_type": "boolean",
+      "confidence": 0.95,
+      "source_location": "Contraindications:",
+      "validation_status": "missing"
+    },
+    "priority_level": {
+      "name": "priority_level",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Priority:",
+      "validation_status": "missing"
+    },
+    "previous_medications_tried": {
+      "name": "previous_medications_tried",
+      "value": null,
+      "field_type": "list_of_strings",
+      "confidence": 0.95,
+      "source_location": "Previous Medications:",
+      "validation_status": "missing"
+    },
+    "clinical_justification": {
+      "name": "clinical_justification",
+      "value": null,
+      "field_type": "text",
+      "confidence": 0.95,
+      "source_location": "Clinical Justification:",
+      "validation_status": "missing"
+    }
+  },
+  "output_document": "# Patient Information Report\n\n**Source Document:** eb1f067f-ef23-4152-abd1-fe25b4a762c8_filled_form.pdf  \n**Extraction Date:** 2025-06-23 17:03:53  \n**Schema Used:** demo_patient_intake\n\n## Extracted Patient Data\n\n### Demographics\n\n* **Patient First Name:** *[NOT FOUND]* \u274c\n* **Patient Last Name:** *[NOT FOUND]* \u274c\n* **Patient Date Of Birth:** *[NOT FOUND]* \u274c\n* **Prescriber Name:** *[NOT FOUND]* \u274c\n* **Requested Drug Name:** *[NOT FOUND]* \u274c\n* **Pharmacy Name:** *[NOT FOUND]* \u274c\n\n### Contact Information\n\n* **Prescriber Phone:** *[NOT FOUND]* \u274c\n\n### Medical Information\n\n* **Primary Diagnosis Code:** *[NOT FOUND]* \u274c\n* **Primary Diagnosis Description:** *[NOT FOUND]* \u274c\n* **Previous Medications Tried:** *[NOT FOUND]* \u274c\n\n### Insurance Information\n\n* **Member Id:** *[NOT FOUND]* \u274c\n\n### Other Information\n\n* **Prescriber Npi:** *[NOT FOUND]* \u274c\n* **Requested Strength:** *[NOT FOUND]* \u274c\n* **Quantity Requested:** *[NOT FOUND]* \u274c\n* **Days Supply:** *[NOT FOUND]* \u274c\n* **A1C Value:** *[NOT FOUND]* \u274c\n* **Bmi Value:** *[NOT FOUND]* \u274c\n* **Contraindications Present:** *[NOT FOUND]* \u274c\n* **Priority Level:** *[NOT FOUND]* \u274c\n* **Clinical Justification:** *[NOT FOUND]* \u274c\n\n---\n\n### Extraction Summary\n\n* **Total Fields:** 20\n* **Successfully Extracted:** 0\n* **Success Rate:** 0.0%\n* **Schema Used:** demo_patient_intake\n\n*Report generated automatically by PatientDataExtractor*\n",
+  "success_rate": 0.0,
+  "total_fields": 20,
+  "extracted_count": 0
+}

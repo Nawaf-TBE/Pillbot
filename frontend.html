@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriorAuth Processor - Dual Upload</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.1em;
+        }
+
+        .upload-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .upload-section {
+            background: #f8faff;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section h3 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .upload-section p {
+            color: #64748b;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .upload-area {
+            background: white;
+            border: 2px dashed #cbd5e1;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #4facfe;
+            background: #f0f9ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #4facfe;
+            background: #eff6ff;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: #1e293b;
+        }
+
+        .upload-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .upload-subtitle {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .upload-formats {
+            color: #9ca3af;
+            font-size: 0.8em;
+        }
+
+        .selected-file {
+            background: #dcfce7;
+            border: 1px solid #16a34a;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-name {
+            color: #16a34a;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .remove-file {
+            background: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .remove-file:hover {
+            background: #dc2626;
+        }
+
+        .upload-actions {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            background: #f8faff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4facfe;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .status-badge {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-processing {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-label {
+            font-size: 0.85em;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .entities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .entity-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid #4facfe;
+        }
+
+        .entity-name {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .entity-value {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1e293b;
+            word-break: break-word;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #4facfe;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .download-btn {
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .upload-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 PriorAuth Processor</h1>
+            <p>AI-powered dual document processing - Extract data and fill forms</p>
+        </div>
+
+        <div class="content">
+            <div class="upload-container">
+                <div class="upload-section">
+                    <h3>📄 Source Document</h3>
+                    <p>Upload the document containing patient information to extract</p>
+                    <div class="upload-area" id="sourceUploadArea" onclick="document.getElementById('sourceFileInput').click()">
+                        <div class="upload-icon">📋</div>
+                        <div class="upload-text">
+                            <div class="upload-title">Drop source PDF here</div>
+                            <div class="upload-subtitle">Medical records, referrals, etc.</div>
+                            <div class="upload-formats">PDF files up to 50MB</div>
+                        </div>
+                        <input type="file" id="sourceFileInput" accept=".pdf" style="display: none;">
+                    </div>
+                    <div class="selected-file" id="sourceSelectedFile" style="display: none;">
+                        <span class="file-name" id="sourceFileName"></span>
+                        <button class="remove-file" onclick="removeSourceFile()">✕</button>
+                    </div>
+                </div>
+
+                <div class="upload-section">
+                    <h3>📝 Form Template</h3>
+                    <p>Upload the blank form to be filled (optional - uses default if not provided)</p>
+                    <div class="upload-area" id="formUploadArea" onclick="document.getElementById('formFileInput').click()">
+                        <div class="upload-icon">📋</div>
+                        <div class="upload-text">
+                            <div class="upload-title">Drop form template here</div>
+                            <div class="upload-subtitle">Prior auth forms, insurance forms, etc.</div>
+                            <div class="upload-formats">PDF files up to 50MB</div>
+                        </div>
+                        <input type="file" id="formFileInput" accept=".pdf" style="display: none;">
+                    </div>
+                    <div class="selected-file" id="formSelectedFile" style="display: none;">
+                        <span class="file-name" id="formFileName"></span>
+                        <button class="remove-file" onclick="removeFormFile()">✕</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-actions">
+                <button class="btn" onclick="processDocuments()" id="processBtn" disabled>
+                    🚀 Process Documents
+                </button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Processing your documents with AI...</p>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <div class="results" id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        let sourceFile = null;
+        let formFile = null;
+        let currentDocId = null;
+
+        // File input handling
+        const sourceFileInput = document.getElementById('sourceFileInput');
+        const formFileInput = document.getElementById('formFileInput');
+        const sourceUploadArea = document.getElementById('sourceUploadArea');
+        const formUploadArea = document.getElementById('formUploadArea');
+        const processBtn = document.getElementById('processBtn');
+
+        // Source file handling
+        sourceFileInput.addEventListener('change', function(e) {
+            handleSourceFileSelection(e.target.files[0]);
+        });
+
+        // Form file handling
+        formFileInput.addEventListener('change', function(e) {
+            handleFormFileSelection(e.target.files[0]);
+        });
+
+        // Drag and drop for source file
+        sourceUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            sourceUploadArea.classList.add('dragover');
+        });
+
+        sourceUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            sourceUploadArea.classList.remove('dragover');
+        });
+
+        sourceUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            sourceUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleSourceFileSelection(files[0]);
+            }
+        });
+
+        // Drag and drop for form file
+        formUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            formUploadArea.classList.add('dragover');
+        });
+
+        formUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            formUploadArea.classList.remove('dragover');
+        });
+
+        formUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            formUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFormFileSelection(files[0]);
+            }
+        });
+
+        function handleSourceFileSelection(file) {
+            if (!file) return;
+            
+            if (file.type !== 'application/pdf') {
+                showError('Please select a PDF file for the source document.');
+                return;
+            }
+
+            sourceFile = file;
+            updateProcessButton();
+            
+            // Update source file display
+            document.getElementById('sourceFileName').textContent = file.name;
+            document.getElementById('sourceSelectedFile').style.display = 'flex';
+            
+            // Update upload area
+            sourceUploadArea.innerHTML = `
+                <div class="upload-icon">✅</div>
+                <div class="upload-text">
+                    <div class="upload-title">${file.name}</div>
+                    <div class="upload-subtitle">Source document ready</div>
+                    <div class="upload-formats">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                </div>
+            `;
+        }
+
+        function handleFormFileSelection(file) {
+            if (!file) return;
+            
+            if (file.type !== 'application/pdf') {
+                showError('Please select a PDF file for the form template.');
+                return;
+            }
+
+            formFile = file;
+            updateProcessButton();
+            
+            // Update form file display
+            document.getElementById('formFileName').textContent = file.name;
+            document.getElementById('formSelectedFile').style.display = 'flex';
+            
+            // Update upload area
+            formUploadArea.innerHTML = `
+                <div class="upload-icon">✅</div>
+                <div class="upload-text">
+                    <div class="upload-title">${file.name}</div>
+                    <div class="upload-subtitle">Form template ready</div>
+                    <div class="upload-formats">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                </div>
+            `;
+        }
+
+        function removeSourceFile() {
+            sourceFile = null;
+            document.getElementById('sourceSelectedFile').style.display = 'none';
+            updateProcessButton();
+            
+            // Reset upload area
+            sourceUploadArea.innerHTML = `
+                <div class="upload-icon">📋</div>
+                <div class="upload-text">
+                    <div class="upload-title">Drop source PDF here</div>
+                    <div class="upload-subtitle">Medical records, referrals, etc.</div>
+                    <div class="upload-formats">PDF files up to 50MB</div>
+                </div>
+            `;
+        }
+
+        function removeFormFile() {
+            formFile = null;
+            document.getElementById('formSelectedFile').style.display = 'none';
+            updateProcessButton();
+            
+            // Reset upload area
+            formUploadArea.innerHTML = `
+                <div class="upload-icon">📋</div>
+                <div class="upload-text">
+                    <div class="upload-title">Drop form template here</div>
+                    <div class="upload-subtitle">Prior auth forms, insurance forms, etc.</div>
+                    <div class="upload-formats">PDF files up to 50MB</div>
+                </div>
+            `;
+        }
+
+        function updateProcessButton() {
+            // Enable process button if at least source file is selected
+            processBtn.disabled = !sourceFile;
+        }
+
+        async function processDocuments() {
+            if (!sourceFile) return;
+
+            const formData = new FormData();
+            formData.append('file', sourceFile);
+            if (formFile) {
+                formData.append('form_template', formFile);
+            }
+            formData.append('extract_entities', 'true');
+            formData.append('use_ocr', 'true');
+
+            try {
+                showLoading(true);
+                hideError();
+
+                const response = await fetch(`${API_BASE}/process-document`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    currentDocId = result.document_id;
+                    showProcessingStatus(result);
+                    pollForResults();
+                } else {
+                    throw new Error(result.detail || 'Processing failed');
+                }
+            } catch (error) {
+                showError('Processing failed: ' + error.message);
+                showLoading(false);
+            }
+        }
+
+        function showProcessingStatus(result) {
+            showLoading(false);
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            const sourceFileName = sourceFile ? sourceFile.name : 'Source Document';
+            const formFileName = formFile ? formFile.name : 'Default Template';
+            
+            resultsDiv.innerHTML = `
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-title">📄 ${sourceFileName}</div>
+                        <div class="status-badge status-processing">Processing</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                    <p>Documents uploaded successfully. AI processing in progress...</p>
+                    <div class="result-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Source Document</div>
+                            <div class="detail-value">${sourceFileName}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Form Template</div>
+                            <div class="detail-value">${formFileName}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Document ID</div>
+                            <div class="detail-value">${result.document_id}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function pollForResults() {
+            if (!currentDocId) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/documents/${currentDocId}`);
+                const result = await response.json();
+
+                if (response.ok) {
+                    updateResults(result.document);
+                    
+                    // Continue polling if still processing
+                    if (result.document.status === 'processing') {
+                        setTimeout(pollForResults, 2000);
+                    }
+                } else {
+                    throw new Error('Failed to get document status');
+                }
+            } catch (error) {
+                showError('Failed to get results: ' + error.message);
+            }
+        }
+
+        function updateResults(docData) {
+            const resultsDiv = document.getElementById('results');
+            if (!resultsDiv) return;
+            
+            let statusClass = 'status-processing';
+            let statusText = 'Processing';
+            let progressWidth = '20%';
+            
+            if (docData.status === 'completed') {
+                statusClass = 'status-completed';
+                statusText = 'Completed';
+                progressWidth = '100%';
+            } else if (docData.status === 'error') {
+                statusClass = 'status-error';
+                statusText = 'Error';
+                progressWidth = '0%';
+            } else if (docData.status === 'processing') {
+                progressWidth = '60%';
+            }
+
+            let detailsHtml = '';
+            if (docData.processing_summary) {
+                const summary = docData.processing_summary;
+                detailsHtml = `
+                    <div class="result-details">
+                        ${summary.extracted_entities ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Entities Found</div>
+                                <div class="detail-value">${Object.keys(summary.extracted_entities).length}</div>
+                            </div>
+                        ` : ''}
+                        ${summary.confidence_score ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Confidence</div>
+                                <div class="detail-value">${(summary.confidence_score * 100).toFixed(1)}%</div>
+                            </div>
+                        ` : ''}
+                        ${summary.processing_time ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Processing Time</div>
+                                <div class="detail-value">${summary.processing_time.toFixed(1)}s</div>
+                            </div>
+                        ` : ''}
+                        ${summary.output_files ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Output Files</div>
+                                <div class="detail-value">${summary.output_files.length}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                // Add entities display
+                if (summary.extracted_entities) {
+                    const entities = summary.extracted_entities;
+                    let entitiesHtml = '<div class="entities-grid">';
+                    
+                    Object.entries(entities).forEach(([key, value]) => {
+                        if (value && value.toString().trim()) {
+                            entitiesHtml += `
+                                <div class="entity-card">
+                                    <div class="entity-name">${key.replace(/_/g, ' ')}</div>
+                                    <div class="entity-value">${value}</div>
+                                </div>
+                            `;
+                        }
+                    });
+                    
+                    entitiesHtml += '</div>';
+                    detailsHtml += entitiesHtml;
+                }
+            }
+
+            const sourceFileName = sourceFile ? sourceFile.name : docData.filename;
+            const formFileName = formFile ? formFile.name : 'Default Template';
+
+            resultsDiv.innerHTML = `
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-title">📄 ${sourceFileName}</div>
+                        <div class="status-badge ${statusClass}">${statusText}</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progressWidth}"></div>
+                    </div>
+                    <p>${getStatusMessage(docData.status)}</p>
+                    ${detailsHtml}
+                    ${docData.status === 'completed' ? `
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <button class="download-btn" onclick="downloadResults()">
+                                📥 Download JSON Results
+                            </button>
+                            <button class="download-btn" onclick="downloadPDF()" style="background: #e11d48;">
+                                📄 Download Filled PDF
+                            </button>
+                        </div>
+                    ` : ''}
+                    ${docData.error ? `
+                        <div class="error-message" style="display: block; margin-top: 15px;">
+                            <strong>Error:</strong> ${docData.error}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function getStatusMessage(status) {
+            switch (status) {
+                case 'processing':
+                    return 'AI is analyzing the documents and extracting information...';
+                case 'completed':
+                    return 'Document processing completed successfully! Results are ready for download.';
+                case 'error':
+                    return 'An error occurred during processing. Please check the details below.';
+                default:
+                    return 'Processing status unknown.';
+            }
+        }
+
+        async function downloadResults() {
+            if (!currentDocId) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/documents/${currentDocId}`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    const blob = new Blob([JSON.stringify(result.document, null, 2)], 
+                        { type: 'application/json' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `processing_results_${currentDocId}.json`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    throw new Error('Failed to download results');
+                }
+            } catch (error) {
+                showError('Download failed: ' + error.message);
+            }
+        }
+
+        async function downloadPDF() {
+            if (!currentDocId) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/documents/${currentDocId}/download-pdf`);
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    
+                    // Get filename from response headers or use default
+                    const contentDisposition = response.headers.get('content-disposition');
+                    let filename = 'filled_form.pdf';
+                    if (contentDisposition) {
+                        const filenameMatch = contentDisposition.match(/filename="?([^"]+)"?/);
+                        if (filenameMatch) {
+                            filename = filenameMatch[1];
+                        }
+                    }
+                    
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                } else {
+                    const error = await response.text();
+                    throw new Error(error || 'Failed to download PDF');
+                }
+            } catch (error) {
+                showError('PDF download failed: ' + error.message);
+            }
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+    </script>
+</body>
+</html> 

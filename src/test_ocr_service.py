@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from services.ocr_service import (
-    perform_mistral_ocr, check_ocr_availability, get_ocr_service_info, OCRError
+    perform_tesseract_ocr, check_ocr_availability, get_ocr_service_info, OCRError
 )
 from services.data_store import (
     generate_document_id, save_document_metadata, save_processed_data
@@ -25,7 +25,7 @@ def create_sample_scanned_pdf():
         from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
         from PIL import Image, ImageDraw, ImageFont
-        import io
+        import tempfile
         
         sample_pdf_path = "sample_scanned_test.pdf"
         
@@ -67,13 +67,13 @@ def create_sample_scanned_pdf():
                 draw.text((20, y_position), line, fill='black', font=font)
             y_position += 25
         
-        # Save image to bytes
-        img_bytes = io.BytesIO()
-        img.save(img_bytes, format='PNG')
-        img_bytes.seek(0)
+        # Save image to temporary file
+        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp_img1:
+            img.save(tmp_img1.name, format='PNG')
+            tmp_img1_path = tmp_img1.name
         
         # Add image to PDF
-        c.drawImage(img_bytes, 50, 200, width=500, height=300)
+        c.drawImage(tmp_img1_path, 50, 200, width=500, height=300)
         c.showPage()
         
         # Add a second page
@@ -103,12 +103,20 @@ def create_sample_scanned_pdf():
                 draw2.text((20, y_position), line, fill='black', font=font)
             y_position += 25
         
-        img_bytes_2 = io.BytesIO()
-        img2.save(img_bytes_2, format='PNG')
-        img_bytes_2.seek(0)
+        # Save second image to temporary file
+        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp_img2:
+            img2.save(tmp_img2.name, format='PNG')
+            tmp_img2_path = tmp_img2.name
         
-        c.drawImage(img_bytes_2, 50, 200, width=500, height=300)
+        c.drawImage(tmp_img2_path, 50, 200, width=500, height=300)
         c.save()
+        
+        # Clean up temporary files
+        try:
+            os.unlink(tmp_img1_path)
+            os.unlink(tmp_img2_path)
+        except:
+            pass
         
         print(f"✅ Created sample scanned PDF: {sample_pdf_path}")
         return sample_pdf_path
@@ -138,18 +146,18 @@ def test_ocr_service():
     
     # Display service information
     service_info = get_ocr_service_info()
-    print(f"Service: {service_info['service_name']}")
-    print(f"Model: {service_info['model']}")
-    print(f"API Key Configured: {'✅' if service_info['api_key_configured'] else '❌'}")
-    print(f"Timeout: {service_info['timeout']} seconds")
-    print(f"Max Retries: {service_info['max_retries']}")
-    print(f"Supported Formats: {', '.join(service_info['supported_formats'])}")
+    print(f"Service: {service_info.get('service', 'Unknown')}")
+    print(f"Version: {service_info.get('version', 'Unknown')}")
+    print(f"Status: {service_info.get('status', 'Unknown')}")
+    print(f"Default Language: {service_info.get('default_language', 'Unknown')}")
+    print(f"Available Languages: {len(service_info.get('available_languages', []))} languages")
+    print(f"Config: {service_info.get('config', 'Unknown')}")
     
     if not is_available:
         print("\n⚠️  OCR service is not available.")
         print("To test OCR functionality:")
-        print("1. Set MISTRAL_API_KEY environment variable")
-        print("2. Ensure you have Mistral API access")
+        print("1. Install Tesseract OCR: brew install tesseract (macOS) or apt-get install tesseract-ocr (Ubuntu)")
+        print("2. Install Python dependencies: pip install pytesseract opencv-python")
         print("3. Re-run this test")
         return
     
@@ -179,7 +187,7 @@ def test_ocr_service():
         
         # Perform OCR
         print("🔍 Starting OCR processing...")
-        ocr_result = perform_mistral_ocr(sample_pdf)
+        ocr_result = perform_tesseract_ocr(sample_pdf)
         
         # Save OCR results
         save_processed_data(doc_id, "ocr", ocr_result)
@@ -226,7 +234,7 @@ def demo_ocr_workflow():
     print("=" * 60)
     
     if not check_ocr_availability():
-        print("❌ OCR service not available. Please configure MISTRAL_API_KEY.")
+        print("❌ OCR service not available. Please install Tesseract OCR.")
         return
     
     print("📋 This demo simulates processing a scanned prior authorization form")
@@ -252,7 +260,7 @@ def demo_ocr_workflow():
         
         # Step 2: OCR Processing
         print("\n🔍 Step 2: OCR text extraction")
-        ocr_result = perform_mistral_ocr(sample_pdf)
+        ocr_result = perform_tesseract_ocr(sample_pdf)
         save_processed_data(doc_id, "ocr", ocr_result)
         save_document_metadata(doc_id, {"status": "ocr_completed"})
         print(f"   Extracted {len(ocr_result.get('extracted_text', ''))} characters")

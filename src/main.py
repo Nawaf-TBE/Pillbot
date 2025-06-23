@@ -15,7 +15,7 @@ from services.data_store import (
     generate_document_id, save_document_metadata, save_processed_data,
     get_document_metadata, list_documents
 )
-from services.ocr_service import perform_mistral_ocr, check_ocr_availability, get_ocr_service_info, OCRError
+from services.ocr_service import perform_tesseract_ocr, check_ocr_availability, get_ocr_service_info, OCRError
 from services.parsing_service import (
     perform_llamaparse, perform_llamaparse_with_metadata, check_parsing_availability, 
     get_parsing_service_info, analyze_prior_auth_document, ParsingError,
@@ -232,8 +232,8 @@ def test_pdf_functions(pdf_path: str):
             # Check if OCR service is available
             if check_ocr_availability():
                 try:
-                    print(f"📸 Starting OCR processing with Mistral Vision API...")
-                    ocr_result = perform_mistral_ocr(pdf_path)
+                    print(f"📸 Starting OCR processing with Tesseract...")
+                    ocr_result = perform_tesseract_ocr(pdf_path)
                     
                     # Save OCR results
                     save_processed_data(doc_id, "ocr", ocr_result)
@@ -253,7 +253,7 @@ def test_pdf_functions(pdf_path: str):
                     print(f"❌ Unexpected OCR error: {e}")
                     save_document_metadata(doc_id, {"status": "ocr_error", "error": str(e)})
             else:
-                print(f"⚠️  OCR service not available (check MISTRAL_API_KEY)")
+                print(f"⚠️  OCR service not available (check Tesseract installation)")
                 save_document_metadata(doc_id, {"status": "ocr_unavailable"})
         else:
             print(f"\n✅ PDF has native text, skipping OCR")
@@ -626,9 +626,10 @@ def main():
     
     # OCR Service
     ocr_info = get_ocr_service_info()
-    print(f"OCR: {ocr_info['service_name']}")
-    print(f"  Model: {ocr_info['model']}")
-    print(f"  API Key: {'✅' if ocr_info['api_key_configured'] else '❌'}")
+    print(f"OCR: {ocr_info.get('service', 'Unknown')}")
+    print(f"  Version: {ocr_info.get('version', 'Unknown')}")
+    print(f"  Status: {ocr_info.get('status', 'Unknown')}")
+    print(f"  Language: {ocr_info.get('default_language', 'Unknown')}")
     
     # Parsing Service
     parsing_info = get_parsing_service_info()

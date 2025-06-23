@@ -1,0 +1,171 @@
+{
+  "document_path": "data/sample_patient_document.txt",
+  "schema_used": "demo_patient_intake",
+  "extraction_timestamp": "2025-06-23T17:04:10.755451",
+  "extracted_fields": {
+    "member_id": {
+      "name": "member_id",
+      "value": "BC123456789",
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Member ID: BC123456789",
+      "validation_status": "valid"
+    },
+    "patient_first_name": {
+      "name": "patient_first_name",
+      "value": "John",
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "First Name: John",
+      "validation_status": "valid"
+    },
+    "patient_last_name": {
+      "name": "patient_last_name",
+      "value": "Doe",
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Last Name: Doe",
+      "validation_status": "valid"
+    },
+    "patient_date_of_birth": {
+      "name": "patient_date_of_birth",
+      "value": "01/15/1985",
+      "field_type": "date",
+      "confidence": 0.95,
+      "source_location": "Date of Birth: 01/15/1985",
+      "validation_status": "valid"
+    },
+    "prescriber_name": {
+      "name": "prescriber_name",
+      "value": "Dr. Smith",
+      "field_type": "string",
+      "confidence": 0.95,
+      "source_location": "Primary Care Physician: Dr. Smith",
+      "validation_status": "valid"
+    },
+    "prescriber_npi": {
+      "name": "prescriber_npi",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "prescriber_phone": {
+      "name": "prescriber_phone",
+      "value": null,
+      "field_type": "phone",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "primary_diagnosis_code": {
+      "name": "primary_diagnosis_code",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "primary_diagnosis_description": {
+      "name": "primary_diagnosis_description",
+      "value": "Type 2 Diabetes, Hypertension",
+      "field_type": "text",
+      "confidence": 0.95,
+      "source_location": "Medical History: Type 2 Diabetes, Hypertension",
+      "validation_status": "valid"
+    },
+    "requested_drug_name": {
+      "name": "requested_drug_name",
+      "value": "UNCLEAR: diabetes medication",
+      "field_type": "string",
+      "confidence": 0.8,
+      "source_location": "Patient reports occasional headaches and requests refill of diabetes medication.",
+      "validation_status": "unclear"
+    },
+    "requested_strength": {
+      "name": "requested_strength",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "quantity_requested": {
+      "name": "quantity_requested",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "days_supply": {
+      "name": "days_supply",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "pharmacy_name": {
+      "name": "pharmacy_name",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "a1c_value": {
+      "name": "a1c_value",
+      "value": "7.2",
+      "field_type": "number",
+      "confidence": 0.95,
+      "source_location": "Last A1C: 7.2% (3 months ago)",
+      "validation_status": "valid"
+    },
+    "bmi_value": {
+      "name": "bmi_value",
+      "value": null,
+      "field_type": "number",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "contraindications_present": {
+      "name": "contraindications_present",
+      "value": null,
+      "field_type": "boolean",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "priority_level": {
+      "name": "priority_level",
+      "value": null,
+      "field_type": "string",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "previous_medications_tried": {
+      "name": "previous_medications_tried",
+      "value": null,
+      "field_type": "list_of_strings",
+      "confidence": 0.0,
+      "source_location": "NOT_FOUND",
+      "validation_status": "missing"
+    },
+    "clinical_justification": {
+      "name": "clinical_justification",
+      "value": "Patient reports occasional headaches and requests refill of diabetes medication. Blood pressure well controlled on current medications.",
+      "field_type": "text",
+      "confidence": 0.9,
+      "source_location": "Patient reports occasional headaches and requests refill of diabetes medication.\nBlood pressure well controlled on current medications.",
+      "validation_status": "valid"
+    }
+  },
+  "output_document": "# Patient Information Report\n\n**Source Document:** sample_patient_document.txt  \n**Extraction Date:** 2025-06-23 17:04:10  \n**Schema Used:** demo_patient_intake\n\n## Extracted Patient Data\n\n### Demographics\n\n* **Patient First Name:** John (confidence: 0.9) \u2705\n* **Patient Last Name:** Doe (confidence: 0.9) \u2705\n* **Patient Date Of Birth:** 01/15/1985 (confidence: 0.9) \u2705\n* **Prescriber Name:** Dr. Smith (confidence: 0.9) \u2705\n* **Requested Drug Name:** UNCLEAR: diabetes medication (confidence: 0.8) \u26a0\ufe0f\n* **Pharmacy Name:** *[NOT FOUND]* \u274c\n\n### Contact Information\n\n* **Prescriber Phone:** *[NOT FOUND]* \u274c\n\n### Medical Information\n\n* **Primary Diagnosis Code:** *[NOT FOUND]* \u274c\n* **Primary Diagnosis Description:** Type 2 Diabetes, Hypertension (confidence: 0.9) \u2705\n* **Previous Medications Tried:** *[NOT FOUND]* \u274c\n\n### Insurance Information\n\n* **Member Id:** BC123456789 (confidence: 0.9) \u2705\n\n### Other Information\n\n* **Prescriber Npi:** *[NOT FOUND]* \u274c\n* **Requested Strength:** *[NOT FOUND]* \u274c\n* **Quantity Requested:** *[NOT FOUND]* \u274c\n* **Days Supply:** *[NOT FOUND]* \u274c\n* **A1C Value:** 7.2 (confidence: 0.9) \u2705\n* **Bmi Value:** *[NOT FOUND]* \u274c\n* **Contraindications Present:** *[NOT FOUND]* \u274c\n* **Priority Level:** *[NOT FOUND]* \u274c\n* **Clinical Justification:** Patient reports occasional headaches and requests refill of diabetes medication. Blood pressure well controlled on current medications. (confidence: 0.9) \u2705\n\n---\n\n### Extraction Summary\n\n* **Total Fields:** 20\n* **Successfully Extracted:** 9\n* **Success Rate:** 45.0%\n* **Schema Used:** demo_patient_intake\n\n*Report generated automatically by PatientDataExtractor*\n",
+  "success_rate": 45.0,
+  "total_fields": 20,
+  "extracted_count": 9
+}

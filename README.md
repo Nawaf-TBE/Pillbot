@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini-blue.svg)](https://ai.google.dev/)
 [![LlamaParse](https://img.shields.io/badge/Parse-LlamaParse-green.svg)](https://docs.llamaindex.ai/en/stable/llama_cloud/llama_parse/)
+[![Tesseract OCR](https://img.shields.io/badge/OCR-Tesseract-orange.svg)](https://github.com/tesseract-ocr/tesseract)
 
 A comprehensive Python system for automating prior authorization document processing with AI-powered entity extraction and advanced document analysis capabilities.
 
@@ -20,7 +21,7 @@ A comprehensive Python system for automating prior authorization document proces
 
 ### Core Document Processing
 - **PDF Analysis**: Detects native vs scanned documents using pypdf
-- **Intelligent OCR**: Conditional OCR using Mistral Vision API for scanned documents only
+- **Intelligent OCR**: Conditional OCR using Tesseract for scanned documents only
 - **Advanced Parsing**: LlamaParse API integration for structured content extraction
 - **Precise Extraction**: pdfplumber integration for targeted data extraction using custom rules
 - **Combined Processing**: Hybrid approach combining multiple extraction methods with cross-validation
@@ -41,41 +42,64 @@ A comprehensive Python system for automating prior authorization document proces
 # Clone and navigate to the project
 cd PriorAuthAutomation
 
-# Install dependencies
+# Install Tesseract OCR (system dependency)
+# macOS
+brew install tesseract
+
+# Ubuntu/Debian
+sudo apt-get install tesseract-ocr
+
+# Windows
+# Download from: https://github.com/UB-Mannheim/tesseract/wiki
+
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Set up environment variables
+# Set up environment variables (only needed for LlamaParse)
 cp .env.example .env
-# Edit .env and add your API keys
+# Edit .env and add your LlamaParse API key
 ```
 
 ## Dependencies
 
 ```
-pypdf==4.0.1           # PDF text detection and analysis
-requests==2.31.0       # HTTP client for API calls
-python-dotenv==1.0.0   # Environment variable management
-Pillow==10.0.0          # Image processing for OCR
-PyMuPDF==1.23.26       # PDF to image conversion
-llama-parse==0.4.4     # Advanced document parsing
-pdfplumber==0.11.0     # Precise PDF data extraction
+# Core dependencies
+pypdf==4.0.1
+
+# OCR dependencies (Tesseract)
+pytesseract==0.3.10
+opencv-python==4.8.1.78
+Pillow==10.1.0
+PyMuPDF==1.23.8
+
+# Document parsing
+llama-parse==0.4.4
+
+# Utilities
+python-dotenv==1.0.0  # Still needed for LlamaParse API key
+requests==2.31.0  # Still needed for LlamaParse API
+
+# Development dependencies
+reportlab==4.0.8
 ```
 
 ## Configuration
 
+### System Requirements
+
+**Tesseract OCR** must be installed on your system:
+- **macOS**: `brew install tesseract`
+- **Ubuntu/Debian**: `sudo apt-get install tesseract-ocr`
+- **Windows**: Download from [UB-Mannheim Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+
 ### Environment Variables
 
 ```bash
-# Mistral API (for OCR of scanned documents)
-MISTRAL_API_KEY=your_mistral_api_key_here
-
 # LlamaParse API (for document parsing) 
 LLAMAPARSE_API_KEY=your_llamaparse_api_key_here
 
 # Optional settings
-MISTRAL_TIMEOUT=300
 LLAMAPARSE_TIMEOUT=300
-MISTRAL_MODEL=pixtral-12b-2409
 ```
 
 ## Core Services
@@ -86,9 +110,10 @@ MISTRAL_MODEL=pixtral-12b-2409
 - `get_pdf_info(pdf_path)` - Comprehensive PDF metadata
 
 ### 2. OCR Service (`ocr_service.py`)
-- `perform_mistral_ocr(pdf_path)` - OCR for scanned documents using Mistral Vision API
-- Automatic rate limiting and retry logic
-- High-quality image conversion for optimal results
+- `perform_tesseract_ocr(pdf_path)` - OCR for scanned documents using Tesseract
+- Image preprocessing for improved accuracy
+- Confidence scoring and structured output
+- Support for multiple languages
 
 ### 3. Document Parsing (`parsing_service.py`)
 - `perform_llamaparse(file_path)` - Structured content extraction

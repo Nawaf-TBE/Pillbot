@@ -1,31 +1,27 @@
 """
-OCR service using Mistral's vision models for document text extraction.
+OCR service using Tesseract for document text extraction.
 """
 
 import os
-import base64
 import json
 import time
 from pathlib import Path
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Tuple
 import logging
-import requests
-from dotenv import load_dotenv
-from PIL import Image
+import pytesseract
+from PIL import Image, ImageEnhance, ImageFilter
 import fitz  # PyMuPDF for PDF to image conversion
-
-# Load environment variables
-load_dotenv()
+import cv2
+import numpy as np
 
 # Set up logging
 logger = logging.getLogger(__name__)
 
-# Configuration from environment variables
-MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
-MISTRAL_API_BASE_URL = os.getenv("MISTRAL_API_BASE_URL", "https://api.mistral.ai/v1")
-MISTRAL_MODEL = os.getenv("MISTRAL_MODEL", "pixtral-12b-2409")
-MISTRAL_TIMEOUT = int(os.getenv("MISTRAL_TIMEOUT", "60"))
-MISTRAL_MAX_RETRIES = int(os.getenv("MISTRAL_MAX_RETRIES", "3"))
+# Configuration
+TESSERACT_CONFIG = '--oem 3 --psm 6'  # OCR Engine Mode 3, Page Segmentation Mode 6
+TESSERACT_LANG = 'eng'  # Default language
+IMAGE_DPI = 300  # DPI for PDF to image conversion
+MAX_PAGES = 10  # Maximum pages to process
 
 
 class OCRError(Exception):
@@ -33,36 +29,41 @@ class OCRError(Exception):
     pass
 
 
-class MistralOCRService:
-    """Service class for Mistral OCR operations."""
+class TesseractOCRService:
+    """Service class for Tesseract OCR operations."""
     
-    def __init__(self):
-        """Initialize the Mistral OCR service."""
-        if not MISTRAL_API_KEY:
-            raise OCRError("MISTRAL_API_KEY environment variable is required")
-        
-        self.api_key = MISTRAL_API_KEY
-        self.base_url = MISTRAL_API_BASE_URL
-        self.model = MISTRAL_MODEL
-        self.timeout = MISTRAL_TIMEOUT
-        self.max_retries = MISTRAL_MAX_RETRIES
-        
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        })
-    
-    def _pdf_to_images(self, pdf_path: str, max_pages: int = 10) -> List[str]:
+    def __init__(self, tesseract_cmd: Optional[str] = None, lang: str = TESSERACT_LANG):
         """
-        Convert PDF pages to base64 encoded images.
+        Initialize the Tesseract OCR service.
+        
+        Args:
+            tesseract_cmd (str, optional): Path to tesseract executable
+            lang (str): Language code for OCR (default: 'eng')
+        """
+        self.lang = lang
+        self.config = TESSERACT_CONFIG
+        
+        # Set tesseract command path if provided
+        if tesseract_cmd:
+            pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
+        
+        # Test if tesseract is available
+        try:
+            pytesseract.get_tesseract_version()
+            logger.info(f"Tesseract OCR initialized successfully with language: {self.lang}")
+        except Exception as e:
+            raise OCRError(f"Tesseract not found or not properly installed: {str(e)}")
+    
+    def _pdf_to_images(self, pdf_path: str, max_pages: int = MAX_PAGES) -> List[Image.Image]:
+        """
+        Convert PDF pages to PIL Images.
         
         Args:
             pdf_path (str): Path to the PDF file
             max_pages (int): Maximum number of pages to process
             
         Returns:
-            List[str]: List of base64 encoded images
+            List[Image.Image]: List of PIL Images
         """
         try:
             doc = fitz.open(pdf_path)
@@ -74,14 +75,15 @@ class MistralOCRService:
             for page_num in range(pages_to_process):
                 page = doc.load_page(page_num)
                 
-                # Render page to image (300 DPI for good OCR quality)
-                mat = fitz.Matrix(300/72, 300/72)  # 300 DPI
+                # Render page to image with high DPI for better OCR
+                mat = fitz.Matrix(IMAGE_DPI/72, IMAGE_DPI/72)
                 pix = page.get_pixmap(matrix=mat)
                 img_data = pix.tobytes("png")
                 
-                # Convert to base64
-                img_base64 = base64.b64encode(img_data).decode('utf-8')
-                images.append(img_base64)
+                # Convert to PIL Image
+                from io import BytesIO
+                img = Image.open(BytesIO(img_data))
+                images.append(img)
             
             doc.close()
             return images
@@ -89,302 +91,359 @@ class MistralOCRService:
         except Exception as e:
             raise OCRError(f"Failed to convert PDF to images: {str(e)}")
     
-    def _image_to_base64(self, image_path: str) -> str:
+    def _preprocess_image(self, image: Image.Image) -> Image.Image:
         """
-        Convert image file to base64 string.
+        Preprocess image to improve OCR accuracy.
+        
+        Args:
+            image (Image.Image): Input image
+            
+        Returns:
+            Image.Image: Preprocessed image
+        """
+        try:
+            # Convert to RGB if necessary
+            if image.mode != 'RGB':
+                image = image.convert('RGB')
+            
+            # Convert PIL to OpenCV format
+            cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+            
+            # Convert to grayscale
+            gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
+            
+            # Apply denoising
+            denoised = cv2.fastNlMeansDenoising(gray)
+            
+            # Apply adaptive threshold to get better contrast
+            thresh = cv2.adaptiveThreshold(
+                denoised, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2
+            )
+            
+            # Convert back to PIL Image
+            processed_image = Image.fromarray(thresh)
+            
+            # Enhance contrast
+            enhancer = ImageEnhance.Contrast(processed_image)
+            processed_image = enhancer.enhance(1.5)
+            
+            # Enhance sharpness
+            enhancer = ImageEnhance.Sharpness(processed_image)
+            processed_image = enhancer.enhance(2.0)
+            
+            return processed_image
+            
+        except Exception as e:
+            logger.warning(f"Image preprocessing failed, using original: {str(e)}")
+            return image
+    
+    def _extract_text_with_confidence(self, image: Image.Image) -> Dict:
+        """
+        Extract text from image with confidence scores.
+        
+        Args:
+            image (Image.Image): Input image
+            
+        Returns:
+            Dict: Extracted text with confidence and metadata
+        """
+        try:
+            # Get detailed OCR data
+            ocr_data = pytesseract.image_to_data(
+                image, 
+                lang=self.lang, 
+                config=self.config,
+                output_type=pytesseract.Output.DICT
+            )
+            
+            # Extract text with confidence
+            text_parts = []
+            confidences = []
+            
+            for i, conf in enumerate(ocr_data['conf']):
+                if int(conf) > 0:  # Only include confident text
+                    text = ocr_data['text'][i].strip()
+                    if text:
+                        text_parts.append(text)
+                        confidences.append(int(conf))
+            
+            # Calculate overall confidence
+            avg_confidence = sum(confidences) / len(confidences) if confidences else 0
+            
+            # Join text parts
+            full_text = ' '.join(text_parts)
+            
+            # Organize by lines/blocks for better structure
+            structured_text = self._organize_text_structure(ocr_data)
+            
+            return {
+                'text': full_text,
+                'confidence': avg_confidence / 100.0,  # Convert to 0-1 scale
+                'word_count': len(text_parts),
+                'structured_text': structured_text,
+                'raw_ocr_data': ocr_data
+            }
+            
+        except Exception as e:
+            raise OCRError(f"Text extraction failed: {str(e)}")
+    
+    def _organize_text_structure(self, ocr_data: Dict) -> List[Dict]:
+        """
+        Organize OCR data into structured format by lines and blocks.
+        
+        Args:
+            ocr_data (Dict): Raw OCR data from pytesseract
+            
+        Returns:
+            List[Dict]: Structured text data
+        """
+        structured = []
+        current_line = []
+        current_line_num = -1
+        
+        for i in range(len(ocr_data['text'])):
+            if int(ocr_data['conf'][i]) > 30:  # Confidence threshold
+                text = ocr_data['text'][i].strip()
+                if text:
+                    line_num = ocr_data['line_num'][i]
+                    
+                    if line_num != current_line_num:
+                        # Save previous line
+                        if current_line:
+                            structured.append({
+                                'type': 'line',
+                                'text': ' '.join(current_line),
+                                'line_number': current_line_num
+                            })
+                        
+                        # Start new line
+                        current_line = [text]
+                        current_line_num = line_num
+                    else:
+                        current_line.append(text)
+        
+        # Add last line
+        if current_line:
+            structured.append({
+                'type': 'line',
+                'text': ' '.join(current_line),
+                'line_number': current_line_num
+            })
+        
+        return structured
+    
+    def perform_ocr_on_image(self, image_path: str) -> Dict:
+        """
+        Perform OCR on a single image file.
         
         Args:
             image_path (str): Path to the image file
             
         Returns:
-            str: Base64 encoded image
+            Dict: OCR results with text and metadata
         """
         try:
-            with open(image_path, "rb") as image_file:
-                return base64.b64encode(image_file.read()).decode('utf-8')
-        except Exception as e:
-            raise OCRError(f"Failed to encode image: {str(e)}")
-    
-    def _call_mistral_vision_api(self, image_base64: str, prompt: str = None) -> Dict:
-        """
-        Call Mistral's vision API for OCR.
-        
-        Args:
-            image_base64 (str): Base64 encoded image
-            prompt (str): Optional custom prompt for OCR
+            logger.info(f"Performing OCR on image: {image_path}")
             
-        Returns:
-            Dict: API response
-        """
-        if not prompt:
-            prompt = """Extract all text from this image. Please provide the text in a structured format that preserves the document layout and hierarchy. Return the result as JSON with the following structure:
-{
-  "extracted_text": "Full text content",
-  "confidence": "Confidence score 0-1",
-  "pages": [
-    {
-      "page_number": 1,
-      "text": "Text content of the page",
-      "sections": [
-        {
-          "type": "header|paragraph|table|list",
-          "content": "Section content",
-          "position": {"x": 0, "y": 0, "width": 100, "height": 20}
-        }
-      ]
-    }
-  ],
-  "metadata": {
-    "language": "detected language",
-    "document_type": "detected document type",
-    "processing_time": "time taken"
-  }
-}"""
-        
-        payload = {
-            "model": self.model,
-            "messages": [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": prompt
-                        },
-                        {
-                            "type": "image_url",
-                            "image_url": {
-                                "url": f"data:image/png;base64,{image_base64}"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "max_tokens": 4000,
-            "temperature": 0.1,  # Low temperature for consistent OCR results
-            "response_format": {"type": "json_object"}
-        }
-        
-        for attempt in range(self.max_retries):
-            try:
-                logger.info(f"Calling Mistral Vision API (attempt {attempt + 1})")
-                
-                response = self.session.post(
-                    f"{self.base_url}/chat/completions",
-                    json=payload,
-                    timeout=self.timeout
-                )
-                
-                if response.status_code == 200:
-                    result = response.json()
-                    logger.info("Successfully received OCR response from Mistral")
-                    return result
-                elif response.status_code == 429:  # Rate limit
-                    wait_time = 2 ** attempt
-                    logger.warning(f"Rate limited, waiting {wait_time} seconds")
-                    time.sleep(wait_time)
-                    continue
-                else:
-                    response.raise_for_status()
-                    
-            except requests.exceptions.Timeout:
-                logger.warning(f"API call timeout (attempt {attempt + 1})")
-                if attempt == self.max_retries - 1:
-                    raise OCRError("API call timed out after all retries")
-                time.sleep(2 ** attempt)
-                
-            except requests.exceptions.RequestException as e:
-                logger.error(f"API call failed: {str(e)}")
-                if attempt == self.max_retries - 1:
-                    raise OCRError(f"API call failed after all retries: {str(e)}")
-                time.sleep(2 ** attempt)
-        
-        raise OCRError("Failed to get successful API response")
-    
-    def _extract_text_from_response(self, api_response: Dict) -> Dict:
-        """
-        Extract and structure text from Mistral API response.
-        
-        Args:
-            api_response (Dict): Raw API response
+            # Load image
+            image = Image.open(image_path)
             
-        Returns:
-            Dict: Structured OCR results
-        """
-        try:
-            # Extract the content from Mistral's response format
-            content = api_response.get("choices", [{}])[0].get("message", {}).get("content", "")
+            # Preprocess image
+            processed_image = self._preprocess_image(image)
             
-            # Try to parse as JSON first
-            try:
-                ocr_data = json.loads(content)
-                if isinstance(ocr_data, dict):
-                    return ocr_data
-            except json.JSONDecodeError:
-                logger.warning("Response is not valid JSON, treating as plain text")
+            # Extract text
+            result = self._extract_text_with_confidence(processed_image)
             
-            # Fallback: create structured response from plain text
             return {
-                "extracted_text": content,
-                "confidence": 0.8,  # Default confidence for plain text
-                "pages": [
-                    {
-                        "page_number": 1,
-                        "text": content,
-                        "sections": [
-                            {
-                                "type": "paragraph",
-                                "content": content,
-                                "position": {"x": 0, "y": 0, "width": 100, "height": 100}
-                            }
-                        ]
-                    }
-                ],
-                "metadata": {
-                    "language": "unknown",
-                    "document_type": "unknown",
-                    "processing_time": "unknown"
-                }
+                'success': True,
+                'file_path': image_path,
+                'extracted_text': result['text'],
+                'confidence': result['confidence'],
+                'word_count': result['word_count'],
+                'structured_text': result['structured_text'],
+                'processing_time': time.time(),
+                'ocr_engine': 'tesseract',
+                'language': self.lang
             }
             
         except Exception as e:
-            logger.error(f"Failed to extract text from API response: {str(e)}")
-            raise OCRError(f"Failed to process API response: {str(e)}")
-
-
-def perform_mistral_ocr(file_path: str) -> Dict:
-    """
-    Perform OCR on a PDF or image file using Mistral's vision models.
+            logger.error(f"OCR failed for image {image_path}: {str(e)}")
+            return {
+                'success': False,
+                'file_path': image_path,
+                'error': str(e),
+                'extracted_text': '',
+                'confidence': 0.0
+            }
     
-    Args:
-        file_path (str): Path to the PDF or image file
+    def perform_ocr_on_pdf(self, pdf_path: str, max_pages: int = MAX_PAGES) -> Dict:
+        """
+        Perform OCR on a PDF file.
         
-    Returns:
-        Dict: Structured OCR results containing extracted text and metadata
-        
-    Raises:
-        OCRError: If OCR processing fails
-        FileNotFoundError: If the input file doesn't exist
-    """
-    start_time = time.time()
-    
-    # Validate input file
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"File not found: {file_path}")
-    
-    file_path = Path(file_path)
-    file_extension = file_path.suffix.lower()
-    
-    try:
-        # Initialize OCR service
-        ocr_service = MistralOCRService()
-        logger.info(f"Starting OCR processing for: {file_path}")
-        
-        # Handle different file types
-        if file_extension == '.pdf':
-            # Convert PDF to images
-            images = ocr_service._pdf_to_images(str(file_path))
+        Args:
+            pdf_path (str): Path to the PDF file
+            max_pages (int): Maximum number of pages to process
             
-            if not images:
-                raise OCRError("No images could be extracted from PDF")
+        Returns:
+            Dict: OCR results with text and metadata
+        """
+        try:
+            start_time = time.time()
+            logger.info(f"Performing OCR on PDF: {pdf_path}")
+            
+            # Convert PDF to images
+            images = self._pdf_to_images(pdf_path, max_pages)
             
             # Process each page
-            all_pages_data = []
-            full_text = ""
+            pages_data = []
+            all_text = []
+            total_confidence = 0
+            total_words = 0
             
-            for i, image_base64 in enumerate(images):
-                logger.info(f"Processing page {i + 1} of {len(images)}")
+            for page_num, image in enumerate(images, 1):
+                logger.info(f"Processing page {page_num}/{len(images)}")
                 
-                # Call Mistral API for this page
-                api_response = ocr_service._call_mistral_vision_api(image_base64)
-                page_data = ocr_service._extract_text_from_response(api_response)
+                # Preprocess image
+                processed_image = self._preprocess_image(image)
                 
-                # Update page numbers
-                if "pages" in page_data:
-                    for page in page_data["pages"]:
-                        page["page_number"] = i + 1
-                        all_pages_data.extend([page])
+                # Extract text
+                result = self._extract_text_with_confidence(processed_image)
                 
-                # Accumulate text
-                if "extracted_text" in page_data:
-                    full_text += f"\n--- Page {i + 1} ---\n{page_data['extracted_text']}\n"
+                page_data = {
+                    'page_number': page_num,
+                    'text': result['text'],
+                    'confidence': result['confidence'],
+                    'word_count': result['word_count'],
+                    'structured_text': result['structured_text']
+                }
+                
+                pages_data.append(page_data)
+                all_text.append(result['text'])
+                total_confidence += result['confidence']
+                total_words += result['word_count']
             
-            # Combine results
-            ocr_result = {
-                "extracted_text": full_text.strip(),
-                "confidence": sum(page.get("confidence", 0.8) for page in all_pages_data) / len(all_pages_data) if all_pages_data else 0.8,
-                "pages": all_pages_data,
-                "metadata": {
-                    "total_pages": len(images),
-                    "file_type": "pdf",
-                    "file_size_mb": round(file_path.stat().st_size / (1024 * 1024), 2),
-                    "processing_time_seconds": round(time.time() - start_time, 2),
-                    "ocr_method": "mistral_vision_api"
+            # Calculate averages
+            avg_confidence = total_confidence / len(images) if images else 0
+            processing_time = time.time() - start_time
+            
+            return {
+                'success': True,
+                'file_path': pdf_path,
+                'extracted_text': '\n\n'.join(all_text),
+                'confidence': avg_confidence,
+                'total_pages': len(images),
+                'total_words': total_words,
+                'pages': pages_data,
+                'processing_time': processing_time,
+                'ocr_engine': 'tesseract',
+                'language': self.lang,
+                'metadata': {
+                    'document_type': 'pdf',
+                    'pages_processed': len(images),
+                    'average_confidence': avg_confidence
                 }
             }
             
-        elif file_extension in ['.png', '.jpg', '.jpeg', '.bmp', '.tiff']:
-            # Handle image files
-            image_base64 = ocr_service._image_to_base64(str(file_path))
-            
-            # Call Mistral API
-            api_response = ocr_service._call_mistral_vision_api(image_base64)
-            ocr_result = ocr_service._extract_text_from_response(api_response)
-            
-            # Add metadata
-            ocr_result["metadata"] = {
-                "total_pages": 1,
-                "file_type": "image",
-                "file_size_mb": round(file_path.stat().st_size / (1024 * 1024), 2),
-                "processing_time_seconds": round(time.time() - start_time, 2),
-                "ocr_method": "mistral_vision_api"
+        except Exception as e:
+            logger.error(f"OCR failed for PDF {pdf_path}: {str(e)}")
+            return {
+                'success': False,
+                'file_path': pdf_path,
+                'error': str(e),
+                'extracted_text': '',
+                'confidence': 0.0,
+                'total_pages': 0
             }
-            
+
+
+# Global service instance
+_ocr_service = None
+
+
+def get_ocr_service() -> TesseractOCRService:
+    """Get or create the OCR service instance."""
+    global _ocr_service
+    if _ocr_service is None:
+        _ocr_service = TesseractOCRService()
+    return _ocr_service
+
+
+def perform_tesseract_ocr(file_path: str) -> Dict:
+    """
+    Perform OCR on a file using Tesseract.
+    
+    Args:
+        file_path (str): Path to the file (PDF or image)
+        
+    Returns:
+        Dict: OCR results with extracted text and metadata
+    """
+    try:
+        if not os.path.exists(file_path):
+            raise OCRError(f"File not found: {file_path}")
+        
+        service = get_ocr_service()
+        file_ext = Path(file_path).suffix.lower()
+        
+        if file_ext == '.pdf':
+            return service.perform_ocr_on_pdf(file_path)
+        elif file_ext in ['.png', '.jpg', '.jpeg', '.tiff', '.bmp']:
+            return service.perform_ocr_on_image(file_path)
         else:
-            raise OCRError(f"Unsupported file type: {file_extension}")
-        
-        logger.info(f"OCR processing completed in {ocr_result['metadata']['processing_time_seconds']} seconds")
-        return ocr_result
-        
+            raise OCRError(f"Unsupported file format: {file_ext}")
+            
     except Exception as e:
-        logger.error(f"OCR processing failed: {str(e)}")
-        raise
+        logger.error(f"OCR operation failed: {str(e)}")
+        return {
+            'success': False,
+            'file_path': file_path,
+            'error': str(e),
+            'extracted_text': '',
+            'confidence': 0.0
+        }
 
 
 def check_ocr_availability() -> bool:
     """
-    Check if OCR service is available and properly configured.
+    Check if Tesseract OCR is available and working.
     
     Returns:
-        bool: True if OCR service is available, False otherwise
+        bool: True if OCR is available, False otherwise
     """
     try:
-        if not MISTRAL_API_KEY:
-            logger.warning("MISTRAL_API_KEY not found in environment variables")
-            return False
-        
-        # Test API connectivity (optional - could make a simple API call)
-        logger.info("OCR service configuration verified")
+        pytesseract.get_tesseract_version()
         return True
-        
     except Exception as e:
-        logger.error(f"OCR service not available: {str(e)}")
+        logger.error(f"Tesseract not available: {str(e)}")
         return False
 
 
 def get_ocr_service_info() -> Dict:
     """
-    Get information about the OCR service configuration.
+    Get information about the OCR service.
     
     Returns:
         Dict: Service information
     """
-    return {
-        "service_name": "Mistral Vision OCR",
-        "model": MISTRAL_MODEL,
-        "api_base_url": MISTRAL_API_BASE_URL,
-        "timeout": MISTRAL_TIMEOUT,
-        "max_retries": MISTRAL_MAX_RETRIES,
-        "api_key_configured": bool(MISTRAL_API_KEY),
-        "supported_formats": [".pdf", ".png", ".jpg", ".jpeg", ".bmp", ".tiff"]
-    } 
+    try:
+        version = pytesseract.get_tesseract_version()
+        languages = pytesseract.get_languages()
+        
+        return {
+            'service': 'tesseract',
+            'version': str(version),
+            'available_languages': languages,
+            'default_language': TESSERACT_LANG,
+            'config': TESSERACT_CONFIG,
+            'status': 'available' if check_ocr_availability() else 'unavailable'
+        }
+    except Exception as e:
+        return {
+            'service': 'tesseract',
+            'status': 'unavailable',
+            'error': str(e)
+        }
+
+
+# Backward compatibility - alias the main function
+perform_mistral_ocr = perform_tesseract_ocr  # Keep the same function name for compatibility 

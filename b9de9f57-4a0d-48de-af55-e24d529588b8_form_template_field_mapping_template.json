@@ -1,0 +1,146 @@
+{
+  "mapping_name": "Custom PDF Field Mapping",
+  "created_for": "b9de9f57-4a0d-48de-af55-e24d529588b8_form_template_field_analysis.json",
+  "schema_file": "data/InsureCo_Ozempic.json",
+  "description": "Maps schema field names to PDF form field names",
+  "field_mappings": {
+    "member_id": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'member_id' to appropriate PDF field",
+      "suggestions": [
+        "Provider Admin CB.1",
+        "Provider Admin CB.10",
+        "Provider Admin CB.2",
+        "Provider Admin CB.21",
+        "Provider Admin CB.22"
+      ]
+    },
+    "patient_first_name": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'patient_first_name' to appropriate PDF field",
+      "suggestions": []
+    },
+    "patient_last_name": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'patient_last_name' to appropriate PDF field",
+      "suggestions": []
+    },
+    "patient_date_of_birth": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'patient_date_of_birth' to appropriate PDF field",
+      "suggestions": []
+    },
+    "prescriber_name": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'prescriber_name' to appropriate PDF field",
+      "suggestions": []
+    },
+    "prescriber_npi": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'prescriber_npi' to appropriate PDF field",
+      "suggestions": []
+    },
+    "prescriber_phone": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'prescriber_phone' to appropriate PDF field",
+      "suggestions": []
+    },
+    "primary_diagnosis_code": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'primary_diagnosis_code' to appropriate PDF field",
+      "suggestions": []
+    },
+    "primary_diagnosis_description": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'primary_diagnosis_description' to appropriate PDF field",
+      "suggestions": []
+    },
+    "requested_drug_name": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'requested_drug_name' to appropriate PDF field",
+      "suggestions": []
+    },
+    "requested_strength": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'requested_strength' to appropriate PDF field",
+      "suggestions": []
+    },
+    "quantity_requested": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'quantity_requested' to appropriate PDF field",
+      "suggestions": []
+    },
+    "days_supply": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'days_supply' to appropriate PDF field",
+      "suggestions": []
+    },
+    "pharmacy_name": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'pharmacy_name' to appropriate PDF field",
+      "suggestions": []
+    },
+    "a1c_value": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'a1c_value' to appropriate PDF field",
+      "suggestions": []
+    },
+    "bmi_value": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'bmi_value' to appropriate PDF field",
+      "suggestions": []
+    },
+    "previous_medications_tried": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'previous_medications_tried' to appropriate PDF field",
+      "suggestions": []
+    },
+    "contraindications_present": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'contraindications_present' to appropriate PDF field",
+      "suggestions": []
+    },
+    "clinical_justification": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'clinical_justification' to appropriate PDF field",
+      "suggestions": []
+    },
+    "priority_level": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'priority_level' to appropriate PDF field",
+      "suggestions": []
+    },
+    "step_therapy_requirement_met": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'step_therapy_requirement_met' to appropriate PDF field",
+      "suggestions": []
+    },
+    "cardiovascular_indication": {
+      "pdf_field_name": null,
+      "confidence": 0.0,
+      "notes": "Map 'cardiovascular_indication' to appropriate PDF field",
+      "suggestions": []
+    }
+  }
+}

@@ -1,0 +1,275 @@
+[
+  {
+    "page": 1,
+    "field_name": "member_id",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Member ID",
+    "rect": [
+      200.0,
+      120.0,
+      400.0,
+      135.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "patient_first_name",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter First Name",
+    "rect": [
+      200.0,
+      145.0,
+      400.0,
+      160.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "patient_last_name",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Last Name",
+    "rect": [
+      200.0,
+      170.0,
+      400.0,
+      185.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "patient_date_of_birth",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Date of Birth",
+    "rect": [
+      200.0,
+      195.0,
+      400.0,
+      210.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "prescriber_name",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Prescriber Name",
+    "rect": [
+      200.0,
+      220.0,
+      400.0,
+      235.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "prescriber_npi",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter NPI",
+    "rect": [
+      200.0,
+      245.0,
+      400.0,
+      260.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "prescriber_phone",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Phone",
+    "rect": [
+      200.0,
+      270.0,
+      400.0,
+      285.0
+    ]
+  },
+  {
+    "page": 1,
+    "field_name": "primary_diagnosis_code",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Diagnosis Code",
+    "rect": [
+      200.0,
+      295.0,
+      400.0,
+      310.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "primary_diagnosis_description",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Diagnosis Description",
+    "rect": [
+      200.0,
+      40.0,
+      400.0,
+      55.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "requested_drug_name",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Drug Name",
+    "rect": [
+      200.0,
+      65.0,
+      400.0,
+      80.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "requested_strength",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Strength",
+    "rect": [
+      200.0,
+      90.0,
+      400.0,
+      105.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "quantity_requested",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Quantity",
+    "rect": [
+      200.0,
+      115.0,
+      400.0,
+      130.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "days_supply",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Days Supply",
+    "rect": [
+      200.0,
+      140.0,
+      400.0,
+      155.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "pharmacy_name",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Pharmacy",
+    "rect": [
+      200.0,
+      165.0,
+      400.0,
+      180.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "a1c_value",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter A1C Value",
+    "rect": [
+      200.0,
+      190.0,
+      400.0,
+      205.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "bmi_value",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter BMI",
+    "rect": [
+      200.0,
+      215.0,
+      400.0,
+      230.0
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "contraindications_present",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Contraindications",
+    "rect": [
+      200.0,
+      40.0,
+      400.0,
+      55.0
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "priority_level",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Priority",
+    "rect": [
+      200.0,
+      65.0,
+      400.0,
+      80.0
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "previous_medications_tried",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Previous Medications",
+    "rect": [
+      200.0,
+      90.0,
+      400.0,
+      105.0
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "clinical_justification",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Clinical Justification",
+    "rect": [
+      200.0,
+      115.0,
+      400.0,
+      130.0
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "step_therapy_requirement_met",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Enter Step Therapy Met",
+    "rect": [
+      200.0,
+      140.0,
+      400.0,
+      155.0
+    ]
+  }
+]

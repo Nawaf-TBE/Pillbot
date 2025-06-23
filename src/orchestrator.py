@@ -23,7 +23,7 @@ from services.data_store import (
     get_document_metadata, get_processed_data, list_documents
 )
 from services.ocr_service import (
-    perform_mistral_ocr, check_ocr_availability, get_ocr_service_info, OCRError
+    perform_tesseract_ocr, check_ocr_availability, get_ocr_service_info, OCRError
 )
 from services.parsing_service import (
     perform_llamaparse, perform_llamaparse_with_metadata, check_parsing_availability,
@@ -103,13 +103,14 @@ class PipelineOrchestrator:
         
         logger.info("Pipeline orchestrator initialized")
     
-    def run_pipeline(self, document_path: str, schema_name: str = "InsureCo_Ozempic") -> Dict[str, Any]:
+    def run_pipeline(self, document_path: str, schema_name: str = "InsureCo_Ozempic", document_id: Optional[str] = None) -> Dict[str, Any]:
         """
         Execute the complete prior authorization processing pipeline.
         
         Args:
             document_path: Path to the input PDF document
             schema_name: Name of the form schema to use
+            document_id: Optional document ID to use (generates new one if not provided)
             
         Returns:
             Dictionary containing pipeline results and metadata
@@ -121,7 +122,7 @@ class PipelineOrchestrator:
             # Initialize pipeline
             pipeline_start_time = datetime.now()
             self.document_path = Path(document_path)
-            self.document_id = generate_document_id()
+            self.document_id = document_id if document_id else generate_document_id()
             
             if not self.document_path.exists():
                 raise PipelineError(
@@ -295,10 +296,10 @@ class PipelineOrchestrator:
             raise Exception("PDF has native text, OCR not needed")
         
         if not check_ocr_availability():
-            raise Exception("OCR service not available (check MISTRAL_API_KEY)")
+            raise Exception("OCR service not available (check Tesseract installation)")
         
         try:
-            ocr_result = perform_mistral_ocr(str(self.document_path))
+            ocr_result = perform_tesseract_ocr(str(self.document_path))
             
             result = {
                 "extracted_text": ocr_result["extracted_text"],
@@ -456,41 +457,266 @@ class PipelineOrchestrator:
             if not populated_form:
                 raise Exception("No populated form data available for PDF generation")
             
-            template_path = self.output_directory / "prior_auth_template.pdf"
-            if not template_path.exists():
-                raise Exception(f"PDF template not found: {template_path}")
-            
             output_filename = f"{self.document_id}_filled_form.pdf"
             output_path = self.output_directory / output_filename
             
-            form_service = FormFillerService()
-            form_service.generate_filled_pdf(
-                str(template_path),
-                populated_form,
-                str(output_path)
-            )
+            # Check if user provided a form template
+            template_path = None
+            user_template_path = self.output_directory / f"{self.document_id}_form_template.pdf"
+            default_template_path = self.output_directory / "prior_auth_template.pdf"
             
-            pdf_stats = populated_form["form_metadata"].get("pdf_generation", {})
+            if user_template_path.exists():
+                template_path = user_template_path
+                logger.info(f"📝 Using user-provided form template: {template_path}")
+            elif default_template_path.exists():
+                template_path = default_template_path
+                logger.info(f"📝 Using default form template: {template_path}")
+            else:
+                # Generate a simple PDF with the data if no template exists
+                logger.info("📝 No template found, generating simple data PDF")
+                return self._generate_simple_data_pdf(populated_form, output_path)
+            
+            # Generate filled PDF using template with enhanced field matching
+            form_service = FormFillerService()
+            
+            try:
+                # Try standard form filling first
+                form_service.generate_filled_pdf(
+                    str(template_path),
+                    populated_form,
+                    str(output_path)
+                )
+                
+                pdf_stats = populated_form["form_metadata"].get("pdf_generation", {})
+                fill_stats = pdf_stats.get("fill_statistics", {})
+                fields_filled = fill_stats.get("fields_filled", 0)
+                fields_found = fill_stats.get("fields_found", 0)
+                
+                # If no fields were filled (field name mismatch), use hybrid approach
+                if fields_filled == 0 and fields_found > 0:
+                    logger.info("📝 No field matches found, generating hybrid PDF with data overlay")
+                    return self._generate_hybrid_pdf(populated_form, template_path, output_path)
+                
+                completion_rate = pdf_stats.get("completion_rate", 0)
+                
+                result = {
+                    "output_path": str(output_path),
+                    "template_path": str(template_path),
+                    "generation_stats": pdf_stats,
+                    "file_size_kb": output_path.stat().st_size / 1024 if output_path.exists() else 0,
+                    "generation_method": "form_filling"
+                }
+                
+                save_processed_data(self.document_id, "pdf_generation", result)
+                
+                logger.info(f"📄 PDF generation: {fields_filled} fields filled ({completion_rate:.1%})")
+                
+                return result
+                
+            except Exception as e:
+                logger.warning(f"Standard form filling failed: {e}")
+                logger.info("📝 Falling back to hybrid PDF generation")
+                return self._generate_hybrid_pdf(populated_form, template_path, output_path)
+            
+        except Exception as e:
+            raise Exception(f"PDF generation failed: {e}")
+    
+    def _generate_hybrid_pdf(self, populated_form: Dict[str, Any], template_path: Path, output_path: Path) -> Dict[str, Any]:
+        """Generate a hybrid PDF using the template as background and overlaying extracted data."""
+        try:
+            import fitz  # PyMuPDF
+            
+            # Open the template PDF
+            template_doc = fitz.open(str(template_path))
+            
+            # Get form data
+            form_data = populated_form.get("form_data", {})
+            form_metadata = populated_form.get("form_metadata", {})
+            
+            # Add a new page at the end with extracted data
+            data_page = template_doc.new_page()
+            
+            # Add title
+            title_rect = fitz.Rect(50, 50, 550, 80)
+            data_page.insert_textbox(title_rect, "Extracted Information", 
+                                   fontsize=16, fontname="helv-bold", color=(0, 0, 0))
+            
+            # Add metadata
+            y_pos = 100
+            metadata_text = f"Generated: {form_metadata.get('population_timestamp', 'Unknown')}\n"
+            metadata_text += f"Schema: {form_metadata.get('schema_name', 'Unknown')}\n"
+            metadata_text += f"Completion: {form_metadata.get('populated_fields_count', 0)}/{form_metadata.get('total_fields_count', 0)} fields\n"
+            metadata_text += f"Template: {template_path.name}\n"
+            
+            metadata_rect = fitz.Rect(50, y_pos, 550, y_pos + 80)
+            data_page.insert_textbox(metadata_rect, metadata_text, fontsize=10, color=(0.3, 0.3, 0.3))
+            
+            # Add extracted data in a clean format
+            y_pos = 200
+            line_height = 20
+            
+            # Organize data by sections for better readability
+            sections = {
+                "Patient Information": ["member_id", "patient_first_name", "patient_last_name", "patient_date_of_birth"],
+                "Prescriber Information": ["prescriber_name", "prescriber_npi", "prescriber_phone"],
+                "Diagnosis": ["primary_diagnosis_code", "primary_diagnosis_description"],
+                "Medication": ["requested_drug_name", "requested_strength", "quantity_requested", "days_supply"],
+                "Clinical Data": ["a1c_value", "bmi_value", "previous_medications_tried", "clinical_justification"]
+            }
+            
+            for section_name, section_fields in sections.items():
+                # Add section header
+                if y_pos > 720:  # Add new page if needed
+                    data_page = template_doc.new_page()
+                    y_pos = 50
+                
+                section_rect = fitz.Rect(50, y_pos, 550, y_pos + line_height)
+                data_page.insert_textbox(section_rect, section_name, 
+                                       fontsize=12, fontname="helv-bold", color=(0.2, 0.2, 0.2))
+                y_pos += line_height + 5
+                
+                # Add section fields
+                section_has_data = False
+                for field_name in section_fields:
+                    if field_name in form_data:
+                        field_info = form_data[field_name]
+                        value = field_info.get("value", "")
+                        
+                        if value and str(value).strip():
+                            section_has_data = True
+                            
+                            if y_pos > 750:  # Add new page if needed
+                                data_page = template_doc.new_page()
+                                y_pos = 50
+                            
+                            # Format field name (make it readable)
+                            display_name = field_name.replace("_", " ").title()
+                            
+                            # Add field with value
+                            field_text = f"  {display_name}: {value}"
+                            field_rect = fitz.Rect(50, y_pos, 550, y_pos + line_height)
+                            data_page.insert_textbox(field_rect, field_text, fontsize=11)
+                            
+                            y_pos += line_height + 2
+                
+                if not section_has_data:
+                    # Add "No data available" message
+                    no_data_rect = fitz.Rect(50, y_pos, 550, y_pos + line_height)
+                    data_page.insert_textbox(no_data_rect, "  No data available", 
+                                           fontsize=11, color=(0.6, 0.6, 0.6))
+                    y_pos += line_height + 2
+                
+                y_pos += 10  # Extra spacing between sections
+            
+            # Save the hybrid PDF
+            template_doc.save(str(output_path))
+            template_doc.close()
+            
+            file_size_kb = output_path.stat().st_size / 1024 if output_path.exists() else 0
             
             result = {
                 "output_path": str(output_path),
                 "template_path": str(template_path),
-                "generation_stats": pdf_stats,
-                "file_size_kb": output_path.stat().st_size / 1024 if output_path.exists() else 0
+                "generation_type": "hybrid_pdf",
+                "file_size_kb": file_size_kb,
+                "fields_included": len([f for f in form_data.values() if f.get("value")]),
+                "generation_method": "hybrid_overlay"
             }
             
             save_processed_data(self.document_id, "pdf_generation", result)
             
-            fill_stats = pdf_stats.get("fill_statistics", {})
-            fields_filled = fill_stats.get("fields_filled", 0)
-            completion_rate = pdf_stats.get("completion_rate", 0)
-            
-            logger.info(f"📄 PDF generation: {fields_filled} fields filled ({completion_rate:.1%})")
+            logger.info(f"📄 Hybrid PDF generated: {result['fields_included']} fields overlaid, {file_size_kb:.1f} KB")
             
             return result
             
         except Exception as e:
-            raise Exception(f"PDF generation failed: {e}")
+            logger.error(f"Failed to generate hybrid PDF: {e}")
+            # Fall back to simple data PDF
+            return self._generate_simple_data_pdf(populated_form, output_path)
+    
+    def _generate_simple_data_pdf(self, populated_form: Dict[str, Any], output_path: Path) -> Dict[str, Any]:
+        """Generate a simple PDF with extracted data when no template is available."""
+        try:
+            import fitz  # PyMuPDF
+            
+            # Create a new PDF document
+            doc = fitz.open()
+            page = doc.new_page()
+            
+            # Get form data
+            form_data = populated_form.get("form_data", {})
+            form_metadata = populated_form.get("form_metadata", {})
+            
+            # Add title
+            title_rect = fitz.Rect(50, 50, 550, 80)
+            page.insert_textbox(title_rect, "Prior Authorization - Extracted Data", 
+                              fontsize=16, fontname="helv-bold", color=(0, 0, 0))
+            
+            # Add metadata
+            y_pos = 100
+            metadata_text = f"Generated: {form_metadata.get('population_timestamp', 'Unknown')}\n"
+            metadata_text += f"Schema: {form_metadata.get('schema_name', 'Unknown')}\n"
+            metadata_text += f"Completion: {form_metadata.get('populated_fields_count', 0)}/{form_metadata.get('total_fields_count', 0)} fields\n"
+            
+            metadata_rect = fitz.Rect(50, y_pos, 550, y_pos + 60)
+            page.insert_textbox(metadata_rect, metadata_text, fontsize=10, color=(0.3, 0.3, 0.3))
+            
+            # Add extracted data
+            y_pos = 180
+            line_height = 20
+            
+            for field_name, field_info in form_data.items():
+                if y_pos > 750:  # Add new page if needed
+                    page = doc.new_page()
+                    y_pos = 50
+                
+                value = field_info.get("value", "")
+                confidence = field_info.get("confidence", 0)
+                
+                if value and str(value).strip():
+                    # Format field name (make it readable)
+                    display_name = field_name.replace("_", " ").title()
+                    
+                    # Add field label
+                    label_rect = fitz.Rect(50, y_pos, 200, y_pos + line_height)
+                    page.insert_textbox(label_rect, f"{display_name}:", 
+                                      fontsize=11, fontname="helv-bold")
+                    
+                    # Add field value
+                    value_rect = fitz.Rect(210, y_pos, 550, y_pos + line_height)
+                    page.insert_textbox(value_rect, str(value), fontsize=11)
+                    
+                    # Add confidence if available
+                    if confidence > 0:
+                        conf_rect = fitz.Rect(560, y_pos, 600, y_pos + line_height)
+                        page.insert_textbox(conf_rect, f"{confidence:.0%}", 
+                                          fontsize=9, color=(0.5, 0.5, 0.5))
+                    
+                    y_pos += line_height + 5
+            
+            # Save the PDF
+            doc.save(str(output_path))
+            doc.close()
+            
+            file_size_kb = output_path.stat().st_size / 1024 if output_path.exists() else 0
+            
+            result = {
+                "output_path": str(output_path),
+                "template_path": None,
+                "generation_type": "simple_data_pdf",
+                "file_size_kb": file_size_kb,
+                "fields_included": len([f for f in form_data.values() if f.get("value")])
+            }
+            
+            save_processed_data(self.document_id, "pdf_generation", result)
+            
+            logger.info(f"📄 Simple data PDF generated: {result['fields_included']} fields, {file_size_kb:.1f} KB")
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"Failed to generate simple data PDF: {e}")
+            raise Exception(f"Simple PDF generation failed: {e}")
     
     def _check_service_availability(self) -> Dict[str, bool]:
         """Check availability of all services."""
@@ -615,7 +841,7 @@ class PipelineOrchestrator:
 
 
 def run_pipeline(document_path: str, schema_name: str = "InsureCo_Ozempic", 
-                output_directory: Optional[str] = None) -> Dict[str, Any]:
+                output_directory: Optional[str] = None, document_id: Optional[str] = None) -> Dict[str, Any]:
     """
     Convenience function to run the complete pipeline.
     
@@ -623,12 +849,13 @@ def run_pipeline(document_path: str, schema_name: str = "InsureCo_Ozempic",
         document_path: Path to the input PDF document
         schema_name: Name of the form schema to use
         output_directory: Directory for output files
+        document_id: Optional document ID to use (generates new one if not provided)
         
     Returns:
         Dictionary containing pipeline results and metadata
     """
     orchestrator = PipelineOrchestrator(output_directory)
-    return orchestrator.run_pipeline(document_path, schema_name)
+    return orchestrator.run_pipeline(document_path, schema_name, document_id)
 
 
 def get_pipeline_info() -> Dict[str, Any]:

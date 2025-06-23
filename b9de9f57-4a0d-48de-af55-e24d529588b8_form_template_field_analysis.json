@@ -1,0 +1,4357 @@
+[
+  {
+    "page": 2,
+    "field_name": "CB1",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Start of treatment",
+    "rect": [
+      82.92900085449219,
+      110.4580078125,
+      93.23079681396484,
+      121.0150146484375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T2",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Start date: (MM)",
+    "rect": [
+      210.19700622558594,
+      109.281982421875,
+      231.8699951171875,
+      120.96099853515625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T3",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Start date: (DD)",
+    "rect": [
+      236.83399963378906,
+      109.281982421875,
+      258.5069885253906,
+      120.96099853515625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T4",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Start date: (YYYY)",
+    "rect": [
+      262.1719970703125,
+      109.281982421875,
+      285.8070068359375,
+      120.96099853515625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB5",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Continuation of therapy",
+    "rect": [
+      306.0480041503906,
+      110.03802490234375,
+      316.3500061035156,
+      120.594970703125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T6",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date of last treatment: (MM)",
+    "rect": [
+      502.3739929199219,
+      109.2760009765625,
+      524.0469970703125,
+      120.95501708984375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T7",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date of last treatment: (DD)",
+    "rect": [
+      529.010986328125,
+      109.2760009765625,
+      550.6840209960938,
+      120.95501708984375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T8",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date of last treatment: (YYYY)",
+    "rect": [
+      554.9990234375,
+      109.2760009765625,
+      578.135986328125,
+      120.95501708984375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T9",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Precertification Requested By:",
+    "rect": [
+      143.625,
+      122.6729736328125,
+      350.625,
+      134.35198974609375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T10",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      386.3070068359375,
+      123.7030029296875,
+      480.1470031738281,
+      135.38201904296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T11",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Fax:",
+    "rect": [
+      501.19500732421875,
+      123.69598388671875,
+      593.594970703125,
+      135.375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T12",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient First Name",
+    "rect": [
+      62.843101501464844,
+      150.93402099609375,
+      230.375,
+      162.61297607421875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T13",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Last Name",
+    "rect": [
+      277.2619934082031,
+      150.93402099609375,
+      501.9209899902344,
+      162.61297607421875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T14",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient DOB (MM/DD/YYYY)",
+    "rect": [
+      526.2670288085938,
+      150.93402099609375,
+      592.1160278320312,
+      162.61297607421875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T15",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Address:",
+    "rect": [
+      52.88520050048828,
+      164.8270263671875,
+      327.07598876953125,
+      176.5059814453125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T16",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "City:",
+    "rect": [
+      347.5299987792969,
+      164.8270263671875,
+      443.9800109863281,
+      176.5059814453125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T17",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "State:",
+    "rect": [
+      469.6700134277344,
+      164.8270263671875,
+      501.9209899902344,
+      176.5059814453125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T18",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "ZIP:",
+    "rect": [
+      521.6199951171875,
+      164.8270263671875,
+      592.1160278320312,
+      176.5059814453125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T19",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Phone",
+    "rect": [
+      69.14689636230469,
+      179.32098388671875,
+      151.4929962158203,
+      191.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T20",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Work Phone:",
+    "rect": [
+      201.93499755859375,
+      179.32098388671875,
+      286.2969970703125,
+      191.0
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T21",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Cell Phone:",
+    "rect": [
+      332.29400634765625,
+      179.44097900390625,
+      421.7250061035156,
+      191.1199951171875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T22",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "E-mail:",
+    "rect": [
+      450.6510009765625,
+      179.44097900390625,
+      592.1160278320312,
+      191.1199951171875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T24",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "lbs",
+    "rect": [
+      78.66909790039062,
+      194.8740234375,
+      100.60900115966797,
+      206.552978515625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T25",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "kgs",
+    "rect": [
+      128.6300048828125,
+      194.989990234375,
+      151.65899658203125,
+      206.66900634765625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T26",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "inches",
+    "rect": [
+      216.36099243164062,
+      194.93597412109375,
+      239.2469940185547,
+      206.614990234375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T27",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "cms",
+    "rect": [
+      280.114990234375,
+      194.85400390625,
+      303.5719909667969,
+      206.53302001953125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T23",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Allergies:",
+    "rect": [
+      363.9159851074219,
+      195.40802001953125,
+      592.1160278320312,
+      207.08697509765625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T28",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Member ID #:",
+    "rect": [
+      72.4458999633789,
+      222.19500732421875,
+      229.36099243164062,
+      232.90301513671875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T29",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Group #:",
+    "rect": [
+      55.536800384521484,
+      233.70098876953125,
+      229.41600036621094,
+      244.40899658203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T30",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Insured:",
+    "rect": [
+      53.76750183105469,
+      244.69598388671875,
+      229.44700622558594,
+      254.6669921875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB31",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      386.09100341796875,
+      222.927978515625,
+      396.39300537109375,
+      233.4840087890625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB32",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      415.6910095214844,
+      222.906982421875,
+      425.99200439453125,
+      233.4630126953125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T33",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "If yes, provide ID#:",
+    "rect": [
+      304.1390075683594,
+      233.13201904296875,
+      386.218994140625,
+      244.40899658203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T34",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Carrier Name:",
+    "rect": [
+      440.7279968261719,
+      233.13201904296875,
+      588.68798828125,
+      244.40899658203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T35",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Insured:",
+    "rect": [
+      266.8479919433594,
+      245.7550048828125,
+      588.68798828125,
+      256.031982421875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T42",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "First Name:",
+    "rect": [
+      61.66939926147461,
+      272.82098388671875,
+      231.23199462890625,
+      283.5010070800781
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T43",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Last Name:",
+    "rect": [
+      277.4209899902344,
+      272.81097412109375,
+      395.2850036621094,
+      283.4909973144531
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB44",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "M.D.",
+    "rect": [
+      453.2449951171875,
+      271.9940185546875,
+      463.5469970703125,
+      282.5509948730469
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB45",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "D.O.",
+    "rect": [
+      490.072998046875,
+      271.98297119140625,
+      500.375,
+      282.5400085449219
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB46",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "N.P.",
+    "rect": [
+      526.3419799804688,
+      272.0040283203125,
+      536.6439819335938,
+      282.5610046386719
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB47",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "P.A.",
+    "rect": [
+      561.6890258789062,
+      271.98297119140625,
+      571.9910278320312,
+      282.5400085449219
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T48",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Address:",
+    "rect": [
+      52.40890121459961,
+      287.9179992675781,
+      326.39801025390625,
+      298.5979919433594
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T49",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "City:",
+    "rect": [
+      347.1679992675781,
+      287.9179992675781,
+      443.7019958496094,
+      298.5979919433594
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T50",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "State:",
+    "rect": [
+      470.031005859375,
+      287.8869934082031,
+      502.8450012207031,
+      298.5669860839844
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T51",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "ZIP:",
+    "rect": [
+      521.7979736328125,
+      287.8869934082031,
+      592.8610229492188,
+      298.5669860839844
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T52",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      45.78519821166992,
+      302.1709899902344,
+      113.06099700927734,
+      312.85101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T53",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Fax:",
+    "rect": [
+      132.92300415039062,
+      302.1709899902344,
+      209.58200073242188,
+      312.85101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T54",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "St Lic #:",
+    "rect": [
+      243.28700256347656,
+      302.1709899902344,
+      326.14599609375,
+      312.85101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T55",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "NPI #:",
+    "rect": [
+      353.95098876953125,
+      302.1709899902344,
+      417.0400085449219,
+      312.85101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T56",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "DEA #:",
+    "rect": [
+      446.7349853515625,
+      302.1709899902344,
+      502.8450012207031,
+      312.85101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T57",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "UPIN:",
+    "rect": [
+      527.7540283203125,
+      302.1499938964844,
+      592.8610229492188,
+      312.8299865722656
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T58.0",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Provider Email:",
+    "rect": [
+      74.67269897460938,
+      317.27301025390625,
+      209.50900268554688,
+      327.9530029296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T58.1",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Office Contact Name:",
+    "rect": [
+      290.1669921875,
+      317.27301025390625,
+      417.0400085449219,
+      327.9530029296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T59",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      446.9049987792969,
+      317.27301025390625,
+      592.8610229492188,
+      327.9530029296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.1",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Self-administered",
+    "rect": [
+      22.34000015258789,
+      352.0459899902344,
+      32.375999450683594,
+      362.5190124511719
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.2",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Physician\u2019s Office",
+    "rect": [
+      107.87300109863281,
+      352.0790100097656,
+      117.90899658203125,
+      362.552001953125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.3",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Home",
+    "rect": [
+      194.05499267578125,
+      352.0790100097656,
+      204.09100341796875,
+      362.552001953125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.4",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Outpatient Infusion Center",
+    "rect": [
+      22.34000015258789,
+      362.49700927734375,
+      32.375999450683594,
+      372.9700012207031
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.5",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Name:",
+    "rect": [
+      157.18699645996094,
+      362.43499755859375,
+      320.2829895019531,
+      373.0169982910156
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.7",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Home Infusion Center",
+    "rect": [
+      22.34000015258789,
+      372.5169982910156,
+      32.375999450683594,
+      382.989990234375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.6",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      165.0959930419922,
+      373.2980041503906,
+      320.2829895019531,
+      383.8800048828125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.8",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Agency Name:",
+    "rect": [
+      111.47799682617188,
+      383.5799865722656,
+      320.2829895019531,
+      394.1619873046875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.10",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Administration code(s)",
+    "rect": [
+      22.34000015258789,
+      393.0249938964844,
+      32.375999450683594,
+      403.49798583984375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.9",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "CPT:",
+    "rect": [
+      143.82699584960938,
+      393.6579895019531,
+      320.2829895019531,
+      404.239990234375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.11A",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Address:",
+    "rect": [
+      56.31019973754883,
+      403.95599365234375,
+      320.2829895019531,
+      414.5379943847656
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.13",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "City:",
+    "rect": [
+      40.63639831542969,
+      415.3280029296875,
+      167.3459930419922,
+      425.9100036621094
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.14",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "State:",
+    "rect": [
+      193.09100341796875,
+      415.3280029296875,
+      229.23599243164062,
+      425.9100036621094
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.15",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "ZIP:",
+    "rect": [
+      246.7010040283203,
+      415.7640075683594,
+      320.2829895019531,
+      426.34600830078125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.16",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      49.74549865722656,
+      425.79998779296875,
+      167.3459930419922,
+      436.3819885253906
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.17A",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Fax:",
+    "rect": [
+      189.15499877929688,
+      425.79998779296875,
+      320.2829895019531,
+      436.3819885253906
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.18",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "TIN:",
+    "rect": [
+      39.92729949951172,
+      437.27301025390625,
+      167.3459930419922,
+      447.8550109863281
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.19",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "PIN:",
+    "rect": [
+      189.15499877929688,
+      437.27301025390625,
+      320.2829895019531,
+      447.8550109863281
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.20",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "NPI:",
+    "rect": [
+      39.86439895629883,
+      448.2250061035156,
+      320.2829895019531,
+      458.8070068359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.21",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Outpatient Dialysis Center",
+    "rect": [
+      331.30499267578125,
+      352.072998046875,
+      341.34100341796875,
+      362.5459899902344
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.22",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Physician\u2019s Office",
+    "rect": [
+      448.74798583984375,
+      352.0220031738281,
+      458.78399658203125,
+      362.4949951171875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.23.0.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Retail Pharmacy",
+    "rect": [
+      331.2909851074219,
+      363.12799072265625,
+      341.3269958496094,
+      373.60101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.24.0.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Specialty Pharmacy",
+    "rect": [
+      448.6730041503906,
+      363.12799072265625,
+      458.7090148925781,
+      373.60101318359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.25",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Mail Order",
+    "rect": [
+      331.2909851074219,
+      374.8550109863281,
+      341.3269958496094,
+      385.3280029296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin CB.26",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      448.6730041503906,
+      374.8550109863281,
+      458.7090148925781,
+      385.3280029296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.27",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      484.71099853515625,
+      374.8219909667969,
+      591.8259887695312,
+      385.8489990234375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.28",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Name:",
+    "rect": [
+      356.0669860839844,
+      386.92401123046875,
+      591.8259887695312,
+      398.0429992675781
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.29a",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Address:",
+    "rect": [
+      363.8489990234375,
+      399.135009765625,
+      591.8259887695312,
+      410.2539978027344
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.30a",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "City:",
+    "rect": [
+      349.0429992675781,
+      411.1409912109375,
+      448.72601318359375,
+      422.1679992675781
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.31",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "State:",
+    "rect": [
+      476.072998046875,
+      411.2590026855469,
+      513.3820190429688,
+      422.1679992675781
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.32",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "ZIP:",
+    "rect": [
+      533.135009765625,
+      411.2590026855469,
+      591.8259887695312,
+      422.1679992675781
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.33",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Phone:",
+    "rect": [
+      359.12799072265625,
+      423.7099914550781,
+      466.9100036621094,
+      434.6189880371094
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.34",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Fax:",
+    "rect": [
+      488.0799865722656,
+      423.7099914550781,
+      591.8259887695312,
+      434.6189880371094
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.35",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "TIN:",
+    "rect": [
+      349.09100341796875,
+      436.05499267578125,
+      466.9100036621094,
+      446.9639892578125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.36",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "PIN:",
+    "rect": [
+      488.08099365234375,
+      436.05499267578125,
+      591.8259887695312,
+      446.9639892578125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "Provider Admin T.37",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "NPI:",
+    "rect": [
+      349.0989990234375,
+      447.89801025390625,
+      591.8259887695312,
+      458.8070068359375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB60",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Riabni (rituximab-arrx)",
+    "rect": [
+      82.12529754638672,
+      475.0929870605469,
+      92.31230163574219,
+      485.68701171875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB61",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Rituxan (rituximab)",
+    "rect": [
+      188.06199645996094,
+      475.0929870605469,
+      198.24899291992188,
+      485.68701171875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB62",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Ruxience (rituximab-pvvr)",
+    "rect": [
+      281.27899169921875,
+      475.177001953125,
+      291.46600341796875,
+      485.77099609375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB63",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Truxima (rituximab-abbs)",
+    "rect": [
+      398.927001953125,
+      475.177001953125,
+      409.114013671875,
+      485.77099609375
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T64",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Dose:",
+    "rect": [
+      45.61000061035156,
+      487.57000732421875,
+      225.343994140625,
+      498.47900390625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T65",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Directions for Use:",
+    "rect": [
+      308.4649963378906,
+      487.57000732421875,
+      459.3169860839844,
+      498.47900390625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T66",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "HCPCS Code:",
+    "rect": [
+      524.906005859375,
+      487.57000732421875,
+      589.9249877929688,
+      498.47900390625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T67",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Primary ICD Code:",
+    "rect": [
+      97.97879791259766,
+      518.5599975585938,
+      270.3380126953125,
+      529.259033203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB68",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Other ICD Code:",
+    "rect": [
+      292.47198486328125,
+      518.5599975585938,
+      302.77398681640625,
+      529.259033203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T69",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Other ICD Code:",
+    "rect": [
+      370.33099365234375,
+      518.5599975585938,
+      589.5579833984375,
+      529.259033203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB70",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.825700759887695,
+      584.4249877929688,
+      33.12770080566406,
+      594.9819946289062
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB71",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.699501037597656,
+      584.6510009765625,
+      62.623199462890625,
+      594.9819946289062
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB72",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.699501037597656,
+      596.738037109375,
+      62.623199462890625,
+      607.0689697265625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB73",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Ruxience (rituximab-pvvr)",
+    "rect": [
+      81.47090148925781,
+      606.9550170898438,
+      91.65750122070312,
+      617.5490112304688
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB74",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Truxima (rituximab-abbs)",
+    "rect": [
+      190.92300415039062,
+      606.9550170898438,
+      201.11000061035156,
+      617.5490112304688
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T75",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s trial and failure of the preferred drug?",
+    "rect": [
+      315.31298828125,
+      617.7750244140625,
+      585.489013671875,
+      628.6840209960938
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T76",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the failure of the preferred drug",
+    "rect": [
+      315.31298828125,
+      630.634033203125,
+      585.489013671875,
+      641.54296875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB77",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.699501037597656,
+      642.22998046875,
+      63.001399993896484,
+      652.7869873046875
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB78",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Ruxience (rituximab-pvvr)",
+    "rect": [
+      81.47090148925781,
+      653.0399780273438,
+      91.65750122070312,
+      663.634033203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB79",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Truxima (rituximab-abbs)",
+    "rect": [
+      190.92300415039062,
+      653.0399780273438,
+      201.11000061035156,
+      663.634033203125
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T80",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s adverse reaction to the preferred drug?",
+    "rect": [
+      315.31298828125,
+      664.2340087890625,
+      585.489013671875,
+      675.1430053710938
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T81",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the adverse reaction to the preferred drug",
+    "rect": [
+      342.1499938964844,
+      676.0919799804688,
+      585.489013671875,
+      687.0009765625
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "T84",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please explain if there are any contraindications or other medical reason(s) that the patient cannot use any of the following preferred biosimilar products when indicated for the patient\u2019s diagnosis?",
+    "rect": [
+      22.731800079345703,
+      720.555908203125,
+      585.489013671875,
+      731.4649047851562
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB82",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Ruxience (rituximab-pvvr)",
+    "rect": [
+      22.825700759887695,
+      708.5637817382812,
+      33.12770080566406,
+      719.1207885742188
+    ]
+  },
+  {
+    "page": 2,
+    "field_name": "CB83",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Truxima (rituximab-abbs)",
+    "rect": [
+      131.9810028076172,
+      708.4747924804688,
+      141.90499877929688,
+      718.8057861328125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T12",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient First Name",
+    "rect": [
+      19.95840072631836,
+      128.02301025390625,
+      164.60400390625,
+      140.68499755859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T13",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Last Name",
+    "rect": [
+      168.7469940185547,
+      128.02301025390625,
+      348.12200927734375,
+      140.68499755859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T19",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Phone",
+    "rect": [
+      353.4530029296875,
+      128.02301025390625,
+      465.8210144042969,
+      140.68499755859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T14",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient DOB (MM/DD/YYYY)",
+    "rect": [
+      470.8710021972656,
+      128.02301025390625,
+      591.301025390625,
+      140.68499755859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB86",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Inflectra (infliximab-dyyb)",
+    "rect": [
+      81.38929748535156,
+      178.2750244140625,
+      91.69129943847656,
+      188.83197021484375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB87",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Renflexis (infliximab-abda)",
+    "rect": [
+      188.22500610351562,
+      178.3590087890625,
+      198.26100158691406,
+      188.83197021484375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB88",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Simponi Aria (golimumab)",
+    "rect": [
+      300.7449951171875,
+      178.3590087890625,
+      310.781005859375,
+      188.83197021484375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T89",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s trial and failure of the preferred drug?",
+    "rect": [
+      314.85101318359375,
+      189.10797119140625,
+      582.4080200195312,
+      199.8070068359375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T90",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the failure of the preferred drug",
+    "rect": [
+      314.85101318359375,
+      201.96600341796875,
+      582.4080200195312,
+      212.66497802734375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB85",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.34349822998047,
+      168.1290283203125,
+      62.64540100097656,
+      178.68597412109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB92",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Inflectra (infliximab-dyyb)",
+    "rect": [
+      81.38929748535156,
+      223.86602783203125,
+      91.69129943847656,
+      234.4229736328125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB93",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Renflexis (infliximab-abda)",
+    "rect": [
+      188.552001953125,
+      223.95001220703125,
+      198.58799743652344,
+      234.4229736328125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB94",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Simponi Aria (golimumab)",
+    "rect": [
+      301.4179992675781,
+      223.95001220703125,
+      311.4540100097656,
+      234.4229736328125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T95",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s adverse reaction to the preferred drug?",
+    "rect": [
+      314.85101318359375,
+      235.56597900390625,
+      582.4080200195312,
+      246.2650146484375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T96a",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the adverse reaction to the preferred drug",
+    "rect": [
+      342.0140075683594,
+      247.42401123046875,
+      582.4080200195312,
+      258.12298583984375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB91",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.34349822998047,
+      214.0479736328125,
+      62.64540100097656,
+      224.60498046875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB98a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Enbrel (etanercept)",
+    "rect": [
+      81.38929748535156,
+      269.666015625,
+      91.69129943847656,
+      280.2229919433594
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB99a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Humira (adalimumab)",
+    "rect": [
+      168.93499755859375,
+      269.75,
+      178.9709930419922,
+      280.2229919433594
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB100a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Idacio (adalimumab-aacf)",
+    "rect": [
+      263.5639953613281,
+      269.75,
+      273.6000061035156,
+      280.2229919433594
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB101a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Rinvoq (upadacitinib)",
+    "rect": [
+      371.9209899902344,
+      269.75,
+      381.9570007324219,
+      280.2229919433594
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB102a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Tyenne SC (tocilizumab-aazg)",
+    "rect": [
+      465.09600830078125,
+      269.75,
+      475.1319885253906,
+      280.2229919433594
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB103a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Xeljanz/Xeljanz XR (tofacitinib)",
+    "rect": [
+      81.38929748535156,
+      280.92999267578125,
+      91.69129943847656,
+      291.48699951171875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T104",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s trial and failure of the preferred drug?",
+    "rect": [
+      314.85101318359375,
+      294.3110046386719,
+      582.4080200195312,
+      305.010009765625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T105",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the failure of the preferred drug",
+    "rect": [
+      314.85101318359375,
+      306.16900634765625,
+      582.4080200195312,
+      316.8680114746094
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB97",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.34349822998047,
+      260.1939697265625,
+      62.64540100097656,
+      270.7509765625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB107z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Enbrel (etanercept)",
+    "rect": [
+      81.38929748535156,
+      328.5570068359375,
+      91.69129943847656,
+      339.114013671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB108z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Humira (adalimumab)",
+    "rect": [
+      168.93499755859375,
+      328.6409912109375,
+      178.9709930419922,
+      339.114013671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB109z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Idacio (adalimumab-aacf)",
+    "rect": [
+      263.5639953613281,
+      328.6409912109375,
+      273.6000061035156,
+      339.114013671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB110z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Rinvoq (upadacitinib)",
+    "rect": [
+      371.9209899902344,
+      328.6409912109375,
+      381.9570007324219,
+      339.114013671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB111z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Tyenne SC (tocilizumab-aazg)",
+    "rect": [
+      465.0780029296875,
+      328.6409912109375,
+      475.114013671875,
+      339.114013671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB112z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Xeljanz/Xeljanz XR (tofacitinib)",
+    "rect": [
+      81.38929748535156,
+      339.8210144042969,
+      91.69129943847656,
+      350.37799072265625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T113",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "When was the member\u2019s adverse reaction to the preferred drug?",
+    "rect": [
+      314.85101318359375,
+      352.33599853515625,
+      582.4080200195312,
+      363.0360107421875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T114",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please describe the nature of the adverse reaction to the preferred drug",
+    "rect": [
+      342.34100341796875,
+      364.19500732421875,
+      582.4080200195312,
+      374.8940124511719
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB106z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.34349822998047,
+      318.0840148925781,
+      62.64540100097656,
+      328.6419982910156
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T118",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please explain if there are any contraindications or other medical reason(s) that the patient cannot use any of the following preferred products when indicated for the patient\u2019s diagnosis?",
+    "rect": [
+      22.0226993560791,
+      409.406005859375,
+      582.4080200195312,
+      420.85198974609375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB115z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Inflectra (infliximab-dyyb)",
+    "rect": [
+      22.401899337768555,
+      397.3210144042969,
+      32.70389938354492,
+      407.87799072265625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB116z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Renflexis (infliximab-abda)",
+    "rect": [
+      129.55799865722656,
+      397.4049987792969,
+      139.593994140625,
+      407.87799072265625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB117z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Simponi Aria (golimumab)",
+    "rect": [
+      241.75100708007812,
+      397.4049987792969,
+      251.78700256347656,
+      407.87799072265625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T125",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please explain if there are contraindications or any other medical reason(s) that the patient cannot use any of the following preferred products when indicated for the patient\u2019s diagnosis?",
+    "rect": [
+      22.0226993560791,
+      464.6180114746094,
+      582.4080200195312,
+      476.0639953613281
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB119z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Enbrel (etanercept)",
+    "rect": [
+      22.401899337768555,
+      441.5849914550781,
+      32.70389938354492,
+      452.1409912109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB120z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Humira (adalimumab)",
+    "rect": [
+      109.67500305175781,
+      441.5469970703125,
+      119.86100006103516,
+      452.1409912109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB121z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Idacio (adalimumab-aacf)",
+    "rect": [
+      201.76400756835938,
+      441.5469970703125,
+      211.9499969482422,
+      452.1409912109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB122z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Rinvoq (upadacitinib)",
+    "rect": [
+      310.4049987792969,
+      441.5379943847656,
+      320.5840148925781,
+      452.1409912109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB123z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Tyenne SC (tocilizumab-aazg)",
+    "rect": [
+      401.4320068359375,
+      441.5379943847656,
+      411.6109924316406,
+      452.1409912109375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB124z",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Xeljanz/Xeljanz XR (tofacitinib)",
+    "rect": [
+      22.401899337768555,
+      452.5150146484375,
+      32.58890151977539,
+      463.1090087890625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB96.4.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      489.9960021972656,
+      32.58890151977539,
+      500.5899963378906
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB98",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      490.0329895019531,
+      62.323001861572266,
+      500.5899963378906
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB99.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      512.27001953125,
+      32.70389938354492,
+      522.8270263671875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB100.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      512.6729736328125,
+      61.89899826049805,
+      522.8060302734375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB101.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      523.8699951171875,
+      32.70389938354492,
+      534.427001953125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB102.0",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      523.8699951171875,
+      62.323001861572266,
+      534.427001953125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB103",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      546.2080078125,
+      32.703800201416016,
+      556.7650146484375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB104",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      546.218017578125,
+      62.323001861572266,
+      556.7750244140625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB104a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Wegener granulomatosis",
+    "rect": [
+      238.76499938964844,
+      568.7449951171875,
+      249.0659942626953,
+      579.301025390625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB104b",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Churg-Strauss syndrome",
+    "rect": [
+      351.2770080566406,
+      568.7249755859375,
+      361.5780029296875,
+      579.281005859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB104c",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "microscopic polyangiitis",
+    "rect": [
+      238.77499389648438,
+      579.343017578125,
+      249.0760040283203,
+      589.8989868164062
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB104d",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "pauci-immune glomerulonephritis",
+    "rect": [
+      351.2860107421875,
+      579.3330078125,
+      361.5880126953125,
+      589.8890380859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB105",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      591.3099975585938,
+      32.703800201416016,
+      601.865966796875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB106",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      591.3410034179688,
+      62.323001861572266,
+      601.89697265625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB106a",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.401899337768555,
+      613.6580200195312,
+      32.703800201416016,
+      624.2139892578125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB107",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "pemphigus vulgaris",
+    "rect": [
+      234.27999877929688,
+      623.35400390625,
+      244.58099365234375,
+      633.9100341796875
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB108",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "pemphigus folliaceus",
+    "rect": [
+      321.2820129394531,
+      623.343017578125,
+      331.5830078125,
+      633.9000244140625
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB109",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "bullous pemphigoid",
+    "rect": [
+      414.0069885253906,
+      623.3370361328125,
+      424.3080139160156,
+      633.8930053710938
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB110",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "cicatricial pemphigoid",
+    "rect": [
+      501.04901123046875,
+      623.322998046875,
+      511.3500061035156,
+      633.8800048828125
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB111",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "epidermolysis bullosa acquisita",
+    "rect": [
+      234.29100036621094,
+      633.9869995117188,
+      244.5919952392578,
+      644.5440063476562
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB112",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "paraneoplastic pemphigus",
+    "rect": [
+      362.60101318359375,
+      633.9970092773438,
+      372.9020080566406,
+      644.5540161132812
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB113",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "None of the above",
+    "rect": [
+      473.9859924316406,
+      633.9830322265625,
+      484.2869873046875,
+      644.5390014648438
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB106b",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.02109909057617,
+      613.66796875,
+      62.323001861572266,
+      624.2249755859375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB114",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "AIDS-related B-cell lymphoma",
+    "rect": [
+      175.54200744628906,
+      655.4459838867188,
+      185.843994140625,
+      666.0029907226562
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB115",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Burkitt lymphoma",
+    "rect": [
+      301.32501220703125,
+      655.4459838867188,
+      311.62701416015625,
+      666.0029907226562
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB116",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Diffuse large B-cell lymphoma",
+    "rect": [
+      380.8210144042969,
+      655.4459838867188,
+      391.12298583984375,
+      666.0029907226562
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB117",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Follicular lymphoma",
+    "rect": [
+      505.20098876953125,
+      655.4459838867188,
+      515.5029907226562,
+      666.0029907226562
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB118",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Gastric MALT lymphoma",
+    "rect": [
+      175.54200744628906,
+      665.8720092773438,
+      185.843994140625,
+      676.4290161132812
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB119",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "High-grade B-Cell lymphoma",
+    "rect": [
+      281.6090087890625,
+      665.8720092773438,
+      291.9110107421875,
+      676.4290161132812
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB120",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Mantle cell lymphoma",
+    "rect": [
+      403.06201171875,
+      665.8720092773438,
+      413.364013671875,
+      676.4290161132812
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB121",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Nodal marginal zone lymphoma",
+    "rect": [
+      175.54200744628906,
+      676.5670166015625,
+      185.843994140625,
+      687.1240234375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB122",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Nongastric MALT lymphoma",
+    "rect": [
+      306.08599853515625,
+      676.5670166015625,
+      316.38800048828125,
+      687.1240234375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB123",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Primary cutaneous B-cell lymphomas",
+    "rect": [
+      425.44000244140625,
+      676.5670166015625,
+      435.74200439453125,
+      687.1240234375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB124",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Splenic marginal zone lymphoma",
+    "rect": [
+      175.54200744628906,
+      687.93701171875,
+      185.843994140625,
+      698.4945068359375
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "CB125",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      311.91900634765625,
+      688.2860107421875,
+      322.22100830078125,
+      698.8427124023438
+    ]
+  },
+  {
+    "page": 3,
+    "field_name": "T126",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      347.5450134277344,
+      688.0380249023438,
+      585.0689697265625,
+      698.70947265625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T12",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient First Name",
+    "rect": [
+      20.796199798583984,
+      131.79498291015625,
+      164.06300354003906,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T13",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Last Name",
+    "rect": [
+      168.93800354003906,
+      131.79498291015625,
+      348.9230041503906,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T19",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Phone",
+    "rect": [
+      354.30499267578125,
+      131.79498291015625,
+      469.82598876953125,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T14",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient DOB (MM/DD/YYYY)",
+    "rect": [
+      475.18701171875,
+      131.79498291015625,
+      592.4639892578125,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB127",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673200607299805,
+      167.864013671875,
+      32.975101470947266,
+      178.4210205078125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB128",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.01240158081055,
+      167.87298583984375,
+      62.31420135498047,
+      178.42999267578125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB129",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "leptomeningeal metastases from lymphoma",
+    "rect": [
+      173.50999450683594,
+      190.15802001953125,
+      183.81199645996094,
+      200.71502685546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB130",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "primary CNS lymphoma",
+    "rect": [
+      346.9599914550781,
+      190.15802001953125,
+      357.2619934082031,
+      200.71502685546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB131",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "none of the above",
+    "rect": [
+      449.24700927734375,
+      190.15802001953125,
+      459.54901123046875,
+      200.71502685546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB132",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "chronic lymphocytic leukemia (CLL)",
+    "rect": [
+      173.1649932861328,
+      212.5050048828125,
+      183.4669952392578,
+      223.06201171875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB133",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "small lymphocytic leukemia",
+    "rect": [
+      317.5360107421875,
+      212.5050048828125,
+      327.8380126953125,
+      223.06201171875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB134",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "none of the above",
+    "rect": [
+      432.5050048828125,
+      212.5050048828125,
+      442.8070068359375,
+      223.06201171875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB135",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      235.28399658203125,
+      32.975101470947266,
+      245.84100341796875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB136",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      235.27197265625,
+      62.31420135498047,
+      245.8289794921875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB139",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      246.739990234375,
+      32.975101470947266,
+      257.2969970703125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB140",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      246.739990234375,
+      62.31420135498047,
+      257.2969970703125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB144",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      268.89697265625,
+      32.975101470947266,
+      279.4539794921875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB145",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      269.38201904296875,
+      62.31420135498047,
+      279.93902587890625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB141",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "relapsed hairy cell leukemia",
+    "rect": [
+      173.4029998779297,
+      291.9289855957031,
+      183.7050018310547,
+      302.4859924316406
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB142",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "refractory hairy cell leukemia",
+    "rect": [
+      290.2030029296875,
+      291.91900634765625,
+      300.5050048828125,
+      302.47601318359375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB143",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "none of the above",
+    "rect": [
+      410.20599365234375,
+      291.90899658203125,
+      420.50799560546875,
+      302.46600341796875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB137",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      313.6650085449219,
+      32.975101470947266,
+      324.22198486328125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB146",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "heart transplant recipient",
+    "rect": [
+      239.57899475097656,
+      334.8080139160156,
+      249.88099670410156,
+      345.364990234375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB147",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "other solid organ transplant recipient",
+    "rect": [
+      345.38299560546875,
+      334.7669982910156,
+      355.68499755859375,
+      345.3240051269531
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB138",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      313.67401123046875,
+      62.31420135498047,
+      324.2309875488281
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB148",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Bavencio (avelumab)",
+    "rect": [
+      293.14898681640625,
+      357.11199951171875,
+      303.45098876953125,
+      367.66900634765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB149",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Imfinzi (durvalumab)",
+    "rect": [
+      386.4150085449219,
+      357.11199951171875,
+      396.7170104980469,
+      367.66900634765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB150",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Keytruda (pembrolizumab)",
+    "rect": [
+      476.68499755859375,
+      357.11199951171875,
+      486.98699951171875,
+      367.66900634765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB151",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Opdivo (nivolumab)",
+    "rect": [
+      293.14898681640625,
+      368.8280029296875,
+      303.45098876953125,
+      379.385009765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB152",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Tecentriq (atezolizumab)",
+    "rect": [
+      380.1409912109375,
+      368.8280029296875,
+      390.4429931640625,
+      379.385009765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB153",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yervoy (ipilimumab)",
+    "rect": [
+      486.5639953613281,
+      368.8280029296875,
+      496.8659973144531,
+      379.385009765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB154",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      293.14898681640625,
+      380.08099365234375,
+      303.45098876953125,
+      390.63800048828125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T155",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Other:",
+    "rect": [
+      327.6289978027344,
+      380.3970031738281,
+      584.3980102539062,
+      391.5920104980469
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB156",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      402.6449890136719,
+      32.975101470947266,
+      413.2019958496094
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB158",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "refractory immune thrombocytopenic purpura",
+    "rect": [
+      90.4845962524414,
+      413.0060119628906,
+      100.78600311279297,
+      423.56201171875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB159",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "idiopathic thrombocytopenic purpura (ITP)",
+    "rect": [
+      268.21099853515625,
+      413.0060119628906,
+      278.51300048828125,
+      423.56201171875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB157",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      51.7942008972168,
+      403.08099365234375,
+      62.96879959106445,
+      413.2019958496094
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB160",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      435.7309875488281,
+      32.975101470947266,
+      446.2879943847656
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB161",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.66699981689453,
+      435.70098876953125,
+      62.96879959106445,
+      446.25799560546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB162",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      458.125,
+      32.975101470947266,
+      468.6820068359375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB163",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      458.1050109863281,
+      62.96879959106445,
+      468.6619873046875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB164",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Relapsing-remitting MS (RRMS)",
+    "rect": [
+      22.673099517822266,
+      490.4849853515625,
+      32.975101470947266,
+      501.0419921875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB165",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Secondary-progressive MS (SPMS)",
+    "rect": [
+      155.08900451660156,
+      490.4849853515625,
+      165.39100646972656,
+      501.0419921875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB166",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Primary-progressive MS (PPMS)",
+    "rect": [
+      299.5010070800781,
+      490.65899658203125,
+      309.8030090332031,
+      501.21600341796875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB167",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Progressive-relapsing MS (PRMS)",
+    "rect": [
+      433.9739990234375,
+      490.7030029296875,
+      444.2760009765625,
+      501.260009765625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB168",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      501.45001220703125,
+      32.975101470947266,
+      512.0069580078125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB169",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      501.47100830078125,
+      62.96879959106445,
+      512.0280151367188
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB170",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      523.8510131835938,
+      32.975101470947266,
+      534.407958984375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB172",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      80.48059844970703,
+      536.14697265625,
+      90.78199768066406,
+      546.7039794921875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB173",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      110.12899780273438,
+      536.136962890625,
+      120.43099975585938,
+      546.6939697265625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB171",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      523.8510131835938,
+      62.96879959106445,
+      534.407958984375
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB174",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      558.5859985351562,
+      32.975101470947266,
+      569.1430053710938
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB175",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      558.5250244140625,
+      62.96879959106445,
+      569.08203125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB176",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      569.6649780273438,
+      32.975101470947266,
+      580.2219848632812
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB177",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      569.614990234375,
+      62.96879959106445,
+      580.1719970703125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB178",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      591.4509887695312,
+      32.975101470947266,
+      602.0079956054688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB179",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      591.4199829101562,
+      62.96879959106445,
+      601.9769897460938
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB180",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      603.18701171875,
+      32.975101470947266,
+      613.7440185546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T189",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Medication:",
+    "rect": [
+      135.4010009765625,
+      624.9459838867188,
+      373.4419860839844,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T190",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      403.30499267578125,
+      625.0750122070312,
+      423.9419860839844,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T191",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      428.614013671875,
+      625.0750122070312,
+      449.25,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T192",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      452.177001953125,
+      625.0750122070312,
+      474.48699951171875,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T193",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      481.57000732421875,
+      625.0750122070312,
+      502.2070007324219,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T194",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      507.2860107421875,
+      625.0750122070312,
+      527.9219970703125,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T195",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      530.97802734375,
+      625.0750122070312,
+      554.6589965820312,
+      635.29296875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T196",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Medication:",
+    "rect": [
+      135.4010009765625,
+      636.1209716796875,
+      373.4419860839844,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T197",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      403.28399658203125,
+      636.2470092773438,
+      423.9219970703125,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T198",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      428.593994140625,
+      636.2470092773438,
+      449.2309875488281,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T199",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      452.1579895019531,
+      636.2479858398438,
+      474.46600341796875,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T200",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      481.5509948730469,
+      636.2470092773438,
+      502.1860046386719,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T201",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      507.2669982910156,
+      636.2470092773438,
+      527.9030151367188,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "T202",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      530.9580078125,
+      636.2470092773438,
+      554.6389770507812,
+      646.4660034179688
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB181",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.666900634765625,
+      603.18701171875,
+      62.96879959106445,
+      613.7440185546875
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB203",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.673099517822266,
+      659.490966796875,
+      32.975101470947266,
+      670.0479736328125
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB204",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      659.4710083007812,
+      62.31420135498047,
+      670.0269775390625
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB205",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      85.74980163574219,
+      671.2470092773438,
+      96.05130004882812,
+      681.8040161132812
+    ]
+  },
+  {
+    "page": 4,
+    "field_name": "CB206",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      115.375,
+      671.2260131835938,
+      125.677001953125,
+      681.7830200195312
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T12",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient First Name",
+    "rect": [
+      20.796199798583984,
+      131.79498291015625,
+      164.39100646972656,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T13",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Last Name",
+    "rect": [
+      169.26499938964844,
+      131.79498291015625,
+      348.5950012207031,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T19",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient Phone",
+    "rect": [
+      354.30499267578125,
+      131.79498291015625,
+      469.82598876953125,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T14",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Patient DOB (MM/DD/YYYY)",
+    "rect": [
+      475.18701171875,
+      131.7960205078125,
+      592.4639892578125,
+      144.45697021484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB207",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Mild",
+    "rect": [
+      249.6199951171875,
+      167.4429931640625,
+      259.9209899902344,
+      178.0
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB208",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Moderate",
+    "rect": [
+      282.375,
+      167.4429931640625,
+      292.6759948730469,
+      178.0
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB209",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Severe",
+    "rect": [
+      334.2569885253906,
+      167.4429931640625,
+      344.5580139160156,
+      178.0
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB210",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      177.44500732421875,
+      33.00960159301758,
+      188.00201416015625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB211",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      177.4429931640625,
+      62.3140983581543,
+      188.0
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB212",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      188.08599853515625,
+      33.00960159301758,
+      198.64300537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB213",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      188.05401611328125,
+      62.3140983581543,
+      198.61102294921875
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB214",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      86.60260009765625,
+      198.60699462890625,
+      96.90440368652344,
+      209.16400146484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB216",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "ineffective",
+    "rect": [
+      191.60000610351562,
+      209.0369873046875,
+      201.90199279785156,
+      219.593994140625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB217",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "not tolerated",
+    "rect": [
+      246.1739959716797,
+      209.0369873046875,
+      256.4750061035156,
+      219.593994140625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB218",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "contraindicated",
+    "rect": [
+      308.3710021972656,
+      209.0369873046875,
+      318.6719970703125,
+      219.593994140625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB215",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      116.39199829101562,
+      198.60699462890625,
+      126.69400024414062,
+      209.16400146484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB223",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      86.60260009765625,
+      221.36798095703125,
+      96.90440368652344,
+      231.92498779296875
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB225",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "azathioprine",
+    "rect": [
+      191.07400512695312,
+      231.44598388671875,
+      201.37600708007812,
+      242.00299072265625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB226",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "cyclosporine",
+    "rect": [
+      251.9080047607422,
+      231.44598388671875,
+      262.2090148925781,
+      242.00299072265625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB227",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "hydroxychloroquine",
+    "rect": [
+      313.947998046875,
+      231.44598388671875,
+      324.2489929199219,
+      242.00299072265625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB228",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "leflunomide",
+    "rect": [
+      399.94500732421875,
+      231.44598388671875,
+      410.2460021972656,
+      242.00299072265625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB229",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "sulfasalazine",
+    "rect": [
+      458.1929931640625,
+      231.44598388671875,
+      468.4939880371094,
+      242.00299072265625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB224",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      116.39199829101562,
+      221.36798095703125,
+      126.69400024414062,
+      231.92498779296875
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB281",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      253.572021484375,
+      33.009498596191406,
+      264.1290283203125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB282",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      253.58099365234375,
+      62.3140983581543,
+      264.13800048828125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB283",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      265.31402587890625,
+      33.009498596191406,
+      275.8709716796875
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T285",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Medication:",
+    "rect": [
+      136.13800048828125,
+      285.8590087890625,
+      374.1789855957031,
+      296.2049865722656
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T286",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      404.0140075683594,
+      285.9859924316406,
+      424.6510009765625,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T287",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      428.8139953613281,
+      285.9859924316406,
+      449.45098876953125,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T288",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      453.23199462890625,
+      285.9859924316406,
+      476.1180114746094,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T289",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      482.5660095214844,
+      285.9859924316406,
+      504.2019958496094,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T290",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      506.7909851074219,
+      285.9859924316406,
+      528.427001953125,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T291",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      531.7750244140625,
+      285.9859924316406,
+      553.8289794921875,
+      296.3320007324219
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T292",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Medication:",
+    "rect": [
+      136.08299255371094,
+      296.54400634765625,
+      374.1239929199219,
+      306.8900146484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T293",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      404.32000732421875,
+      296.7300109863281,
+      424.99200439453125,
+      307.07598876953125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T294",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      428.8139953613281,
+      296.7300109863281,
+      449.4849853515625,
+      307.07598876953125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T295",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      453.0889892578125,
+      296.6719970703125,
+      475.9750061035156,
+      307.01800537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T296",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      482.197998046875,
+      296.6719970703125,
+      503.8340148925781,
+      307.01800537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T297",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      506.75,
+      296.6719970703125,
+      528.385986328125,
+      307.01800537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T298",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      531.7750244140625,
+      296.6719970703125,
+      553.8289794921875,
+      307.01800537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB284",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      265.322021484375,
+      62.3140983581543,
+      275.8790283203125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB299",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      320.2669982910156,
+      33.009498596191406,
+      330.8240051269531
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB300",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      320.2760009765625,
+      62.31420135498047,
+      330.8330078125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB301",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      342.3320007324219,
+      33.0093994140625,
+      352.8890075683594
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB302",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      342.3489990234375,
+      62.31420135498047,
+      352.906005859375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB303",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      365.67498779296875,
+      33.00960159301758,
+      376.23199462890625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB304",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      365.6730041503906,
+      62.31399917602539,
+      376.2300109863281
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T305",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Please indicate the length of time on Rituxan (rituximab):",
+    "rect": [
+      225.25999450683594,
+      374.875,
+      512.3599853515625,
+      386.5299987792969
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB310",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Mild",
+    "rect": [
+      353.3630065917969,
+      398.0530090332031,
+      363.66400146484375,
+      408.6099853515625
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB311",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Moderate",
+    "rect": [
+      386.1109924316406,
+      398.02301025390625,
+      396.4119873046875,
+      408.5799865722656
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB312",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Severe",
+    "rect": [
+      437.9490051269531,
+      398.02301025390625,
+      448.25,
+      408.5799865722656
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB306",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      408.30999755859375,
+      33.00960159301758,
+      418.86700439453125
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB307",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      408.2569885253906,
+      62.31420135498047,
+      418.8139953613281
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB308",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      419.2879943847656,
+      33.0093994140625,
+      429.8450012207031
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB309",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      419.2860107421875,
+      62.31399917602539,
+      429.8429870605469
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB313",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      441.96099853515625,
+      33.0093994140625,
+      452.51800537109375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB314",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      441.9620056152344,
+      62.31420135498047,
+      452.5190124511719
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB315",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "Yes",
+    "rect": [
+      22.707700729370117,
+      453.41900634765625,
+      33.00960159301758,
+      463.97601318359375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "CB316",
+    "field_type": 2,
+    "field_value": "",
+    "field_label": "No",
+    "rect": [
+      52.012298583984375,
+      453.43798828125,
+      62.31399917602539,
+      463.9949951171875
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T317",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (MM)",
+    "rect": [
+      508.2340087890625,
+      484.19500732421875,
+      531.7239990234375,
+      496.53900146484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T318",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (DD)",
+    "rect": [
+      536.8720092773438,
+      484.19500732421875,
+      556.3619995117188,
+      496.53900146484375
+    ]
+  },
+  {
+    "page": 5,
+    "field_name": "T319",
+    "field_type": 7,
+    "field_value": "",
+    "field_label": "Date: (YYYY)",
+    "rect": [
+      561.8579711914062,
+      484.19500732421875,
+      584.239013671875,
+      496.53900146484375
+    ]
+  }
+]

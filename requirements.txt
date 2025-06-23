@@ -1,8 +1,26 @@
+# Core dependencies
 pypdf==4.0.1
-requests==2.31.0
-python-dotenv==1.0.0
-Pillow==10.0.0
-PyMuPDF==1.23.26
+
+# OCR dependencies (Tesseract)
+pytesseract==0.3.10
+opencv-python>=4.8.0
+Pillow>=10.0.0
+PyMuPDF>=1.23.0
+
+# Document parsing
 llama-parse==0.4.4
-pdfplumber==0.11.0
-google-generativeai==0.3.2 
+
+# AI dependencies
+google-generativeai>=0.3.2
+
+# Web framework and production
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Development dependencies
+reportlab>=4.0.0 

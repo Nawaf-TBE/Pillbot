@@ -1,0 +1,212 @@
+{
+  "schema_name": "demo_patient_intake",
+  "version": "1.0",
+  "description": "Auto-generated schema from eb1f067f-ef23-4152-abd1-fe25b4a762c8_filled_form.pdf",
+  "fields": {
+    "member_id": {
+      "type": "string",
+      "description": "Patient's unique identifier within the insurance company's system",
+      "required": true,
+      "alternative_names": [
+        "Member Number",
+        "Insurance ID",
+        "Policy Number"
+      ],
+      "validation_pattern": null
+    },
+    "patient_first_name": {
+      "type": "string",
+      "description": "Patient's first name",
+      "required": true,
+      "alternative_names": [
+        "Given Name",
+        "FirstName"
+      ],
+      "validation_pattern": null
+    },
+    "patient_last_name": {
+      "type": "string",
+      "description": "Patient's last name",
+      "required": true,
+      "alternative_names": [
+        "Surname",
+        "LastName"
+      ],
+      "validation_pattern": null
+    },
+    "patient_date_of_birth": {
+      "type": "date",
+      "description": "Patient's date of birth",
+      "required": true,
+      "alternative_names": [
+        "DOB",
+        "Birthdate"
+      ],
+      "validation_pattern": null
+    },
+    "prescriber_name": {
+      "type": "string",
+      "description": "Name of the prescribing physician",
+      "required": true,
+      "alternative_names": [
+        "Physician Name",
+        "Doctor's Name",
+        "Prescribing Doctor"
+      ],
+      "validation_pattern": null
+    },
+    "prescriber_npi": {
+      "type": "string",
+      "description": "National Provider Identifier of the prescribing physician",
+      "required": true,
+      "alternative_names": [
+        "NPI Number",
+        "Provider ID"
+      ],
+      "validation_pattern": null
+    },
+    "prescriber_phone": {
+      "type": "phone",
+      "description": "Phone number of the prescribing physician",
+      "required": true,
+      "alternative_names": [
+        "Physician Phone",
+        "Doctor's Phone"
+      ],
+      "validation_pattern": null
+    },
+    "primary_diagnosis_code": {
+      "type": "string",
+      "description": "ICD code for the patient's primary diagnosis",
+      "required": true,
+      "alternative_names": [
+        "Diagnosis Code",
+        "ICD Code",
+        "Medical Code"
+      ],
+      "validation_pattern": null
+    },
+    "primary_diagnosis_description": {
+      "type": "text",
+      "description": "Description of the patient's primary diagnosis",
+      "required": true,
+      "alternative_names": [
+        "Diagnosis Description",
+        "Medical Description"
+      ],
+      "validation_pattern": null
+    },
+    "requested_drug_name": {
+      "type": "string",
+      "description": "Name of the drug requested for prior authorization",
+      "required": true,
+      "alternative_names": [
+        "Medication Name",
+        "Drug Name"
+      ],
+      "validation_pattern": null
+    },
+    "requested_strength": {
+      "type": "string",
+      "description": "Strength of the drug requested",
+      "required": true,
+      "alternative_names": [
+        "Dosage Strength",
+        "Drug Strength"
+      ],
+      "validation_pattern": null
+    },
+    "quantity_requested": {
+      "type": "number",
+      "description": "Quantity of the drug requested",
+      "required": true,
+      "alternative_names": [
+        "Quantity",
+        "Number of Units"
+      ],
+      "validation_pattern": null
+    },
+    "days_supply": {
+      "type": "number",
+      "description": "Number of days the requested quantity of medication should last",
+      "required": true,
+      "alternative_names": [
+        "Days Supply",
+        "Medication Duration"
+      ],
+      "validation_pattern": null
+    },
+    "pharmacy_name": {
+      "type": "string",
+      "description": "Name of the pharmacy where the medication will be dispensed",
+      "required": true,
+      "alternative_names": [
+        "Pharmacy",
+        "Dispensing Pharmacy"
+      ],
+      "validation_pattern": null
+    },
+    "a1c_value": {
+      "type": "number",
+      "description": "Patient's A1C value",
+      "required": false,
+      "alternative_names": [
+        "A1C Level",
+        "Hemoglobin A1c"
+      ],
+      "validation_pattern": null
+    },
+    "bmi_value": {
+      "type": "number",
+      "description": "Patient's Body Mass Index",
+      "required": false,
+      "alternative_names": [
+        "BMI",
+        "Body Mass Index"
+      ],
+      "validation_pattern": null
+    },
+    "contraindications_present": {
+      "type": "boolean",
+      "description": "Indicates if any contraindications exist for the requested medication",
+      "required": false,
+      "alternative_names": [
+        "Contraindications",
+        "Medication Contraindications"
+      ],
+      "validation_pattern": null
+    },
+    "priority_level": {
+      "type": "string",
+      "description": "Priority level for the prior authorization request",
+      "required": false,
+      "alternative_names": [
+        "Priority",
+        "Request Priority"
+      ],
+      "validation_pattern": null
+    },
+    "previous_medications_tried": {
+      "type": "list_of_strings",
+      "description": "List of medications previously tried by the patient",
+      "required": false,
+      "alternative_names": [
+        "Prior Medications",
+        "Previous Treatments"
+      ],
+      "validation_pattern": null
+    },
+    "clinical_justification": {
+      "type": "text",
+      "description": "Clinical justification for the requested medication",
+      "required": true,
+      "alternative_names": [
+        "Clinical Rationale",
+        "Medical Justification"
+      ],
+      "validation_pattern": null
+    }
+  },
+  "created_date": "2025-06-23T17:03:42.171227",
+  "source_document": "data/eb1f067f-ef23-4152-abd1-fe25b4a762c8_filled_form.pdf"
+}
